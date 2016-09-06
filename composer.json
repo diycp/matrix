@@ -6,7 +6,7 @@
     "laravel",
     "angular",
     "adminlte",
-    'admin'
+    "admin"
   ],
   "license": "MIT",
   "type": "project",
