@@ -1,0 +1,1 @@
+<app-include src="template" onload="loaded()" onfail="failed">loading...</app-include>

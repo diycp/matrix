@@ -1,0 +1,68 @@
+// 页面启动等待效果
+.svg-icon-loader {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+// 修复左侧菜单展开效果
+.sidebar-menu li.active > a > .pull-right-container > .fa-angle-left {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+// 登录注册页面样式
+.login-box-body, .register-box-body {
+  border: 1px solid #ddd;
+}
+
+// angular validation
+.ng-invalid.ng-dirty {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+
+  :focus {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+  }
+}
+
+label.has-error.control-label {
+  color: #a94442;
+}
+
+.markdown {
+  table {
+    border: 1px solid #ddd;
+    //background-color: transparent;
+    background-color: #fff;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  table > thead > tr > th,
+  table > tbody > tr > th,
+  table > tfoot > tr > th,
+  table > thead > tr > td,
+  table > tbody > tr > td,
+  table > tfoot > tr > td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+  }
+  table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+  }
+}

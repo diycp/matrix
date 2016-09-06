@@ -1,0 +1,16 @@
+/vendor
+/node_modules
+/bower_components
+/public/storage
+/public/build
+/public/css
+/public/js
+/public/fonts
+/public/img
+Homestead.yaml
+Homestead.json
+.env
+.idea
+.c9
+.DS_Store
+composer.lock
