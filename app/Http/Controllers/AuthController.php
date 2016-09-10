@@ -38,30 +38,56 @@ class AuthController extends Controller
         // 获取插件列表
         $installed = json_decode($filesystem->get(base_path('vendor/composer/installed.json')), true);
 
-        return collect($installed)
-            ->where('type', 'laa-plugin')
-            ->map(function ($item) {
-                // 生成链接
-                array_set($item, 'extra.plugin.menu.url', str_replace(['laa-plugin-', 'laa-'], '', $item['name']));
+        $collect = collect($installed)->where('type', 'laa-plugin');
+        $groups = $collect->pluck('extra.plugin.menu.group')->toArray();
+        $prepend = [];
 
-                // 24小时内安装的菜单显示new标签
-                if (strtotime($item['time'] . '+ 1 day') > time()) {
-                    $new = [
-                        'class' => 'bg-green',
-                        'text' => 'new'
-                    ];
-                    if (array_get($item, 'extra.plugin.menu.right')) {
-                        array_prepend($item, $new);
-                    } else {
-                        array_set($item, 'extra.plugin.menu.right', [$new]);
-                    }
+        $collect->sortBy('time')->each(function ($item) use ($groups, &$prepend) {
+            $group = array_get($item, 'extra.plugin.menu.group');
+            $icons = array_get($item, 'extra.plugin.menu.group-icons');
+            $groupSplit = explode('|', $group);
+            $iconsSplit = explode('|', $icons);
+            for ($i = count($groupSplit); $i > 1; $i--) {
+                $name = array_pop($groupSplit);
+                $group = implode('|', $groupSplit);
+                $icon = array_pop($iconsSplit);
+                $icons = implode('|', $iconsSplit);
+
+                if (!in_array($group, $groups)) {
+                    array_push($prepend, [
+                        'group' => $group,
+                        'name' => $name,
+                        'icon' => $icon,
+                        'group-icons' => $icons,
+                    ]);
                 }
+            }
+        });
 
-                return $item;
-            })
-            ->sortByDesc('time')
-            ->pluck('extra.plugin.menu')
-            ->all();
+        $menus = $collect->map(function ($item) use ($groups) {
+
+            // 生成链接
+            array_set($item, 'extra.plugin.menu.url', str_replace(['laa-plugin-', 'laa-'], '', $item['name']));
+
+            // 24小时内安装的菜单显示new标签
+            if (strtotime($item['time'] . '+ 1 day') > time()) {
+                $new = [
+                    'class' => 'bg-green',
+                    'text' => 'new'
+                ];
+                if (array_get($item, 'extra.plugin.menu.right')) {
+                    array_prepend($item, $new);
+                } else {
+                    array_set($item, 'extra.plugin.menu.right', [$new]);
+                }
+            }
+
+            return $item;
+        })
+            ->sortBy('time')
+            ->pluck('extra.plugin.menu');
+
+        return collect($prepend)->merge($menus)->all();
     }
 
     /**
