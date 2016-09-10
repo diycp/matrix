@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Models\Menu;
 use App\Models\User;
 use Auth;
+use Illuminate\Filesystem\Filesystem;
 
 class AuthController extends Controller
 {
@@ -32,9 +33,35 @@ class AuthController extends Controller
      * 获取用户对应左侧菜单数据
      * @return mixed
      */
-    public function showMenu()
+    public function showMenu(Filesystem $filesystem)
     {
-        return Menu::orderBy('order_by', 'asc')->orderBy('updated_at', 'asc')->get();
+        // 获取插件列表
+        $installed = json_decode($filesystem->get(base_path('vendor/composer/installed.json')), true);
+
+        return collect($installed)
+            ->where('type', 'laa-plugin')
+            ->map(function ($item) {
+                // 生成链接
+                array_set($item, 'extra.plugin.menu.url', str_replace(['laa-plugin-', 'laa-'], '', $item['name']));
+
+                // 24小时内安装的菜单显示new标签
+                if (strtotime($item['time'] . '+ 1 day') > time()) {
+                    $new = [
+                        'class' => 'bg-green',
+                        'text' => 'new'
+                    ];
+                    if (array_get($item, 'extra.plugin.menu.right')) {
+                        array_prepend($item, $new);
+                    } else {
+                        array_set($item, 'extra.plugin.menu.right', [$new]);
+                    }
+                }
+
+                return $item;
+            })
+            ->sortByDesc('time')
+            ->pluck('extra.plugin.menu')
+            ->all();
     }
 
     /**
