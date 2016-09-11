@@ -37,7 +37,5 @@ Route::get('auth/logout', 'AuthController@logout');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('menu', 'MenuController');
-    Route::resource('role', 'RoleController');
-    Route::resource('user', 'UserController');
 
 });
