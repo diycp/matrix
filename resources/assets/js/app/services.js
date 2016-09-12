@@ -66,24 +66,4 @@ angular.module('app.services', [])
                 $state.go('login');
             });
         };
-    }])
-
-    // 系统菜单
-    .service('menu', ['$resource', function ($resource) {
-        this.api = $resource('/menu/:id', {id: '@id'});
-        this.data = [];
-        this.init = function () {
-            let that = this;
-            this.api.getAll(function (data) {
-                that.data = data;
-            });
-            console.log('service menu init');
-        };
-        this.delete = function (menu) {
-            let that = this;
-            menu.$delete(function () {
-                that.init();
-            });
-            console.log('service menu delete');
-        }
     }]);

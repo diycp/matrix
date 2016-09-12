@@ -1,7 +1,6 @@
 'use strict';
 
 import './controllers/app.js';
-import './controllers/modules.js';
 
 angular.module('app.controllers', ['app.controllers.app', 'app.controllers.modules'])
     .controller('AllCtrl', ['$rootScope', '$scope', 'appServices', 'DTDefaultOptions', function ($rootScope, $scope, appServices, DTDefaultOptions) {
