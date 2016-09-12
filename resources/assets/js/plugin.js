@@ -1,3 +1,3 @@
 'use strict';
 
-var PLUGIN = angular.module('app.plugins', []);
+const PLUGIN = angular.module('app.plugins', []);

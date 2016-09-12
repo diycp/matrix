@@ -74,6 +74,7 @@ elixir(function (mix) {
         )
         .styles(plugins.css, 'public/css/plugin.css', './')
         .scripts(plugins.js, 'public/js/plugin.js', './')
+        .browserify('../../../public/js/plugin.js')
         .copy(
             [
                 'bower_components/AdminLTE/bootstrap/fonts',
