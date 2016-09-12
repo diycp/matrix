@@ -41,10 +41,14 @@ label.has-error.control-label {
 }
 
 .markdown {
+  background-color: #fefefe;
+  padding: 10px;
+  //border: 1px solid #ccc;
+  border-radius: 4px;
+
   table {
     border: 1px solid #ddd;
-    //background-color: transparent;
-    background-color: #fff;
+    background-color: transparent;
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
