@@ -14,7 +14,9 @@ var fs = require('fs');
 
 // 处理插件
 var plugins = {
-    'css': [],
+    'css': [
+        'resources/assets/css/plugin.css'
+    ],
     'js': [
         'resources/assets/js/plugin.js'
     ]
