@@ -2,7 +2,7 @@
 
 import './controllers/app.js';
 
-angular.module('app.controllers', ['app.controllers.app', 'app.controllers.modules'])
+angular.module('app.controllers', ['app.controllers.app'])
     .controller('AllCtrl', ['$rootScope', '$scope', 'appServices', 'DTDefaultOptions', function ($rootScope, $scope, appServices, DTDefaultOptions) {
         $scope.services = appServices;
         $scope.services.init('auth');
