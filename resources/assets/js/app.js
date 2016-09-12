@@ -7,7 +7,7 @@ import './app/controllers.js';
 import './app/directives.js';
 import './app/filters.js';
 
-const app = angular.module('app', [
+angular.module('app', [
     'ngResource',
     'ngAnimate',
     'ngCookies',
@@ -26,7 +26,8 @@ angular.module('app.modules', [
     'app.services',
     'app.controllers',
     'app.directives',
-    'app.filters'
+    'app.filters',
+    'app.plugins'
 ]);
 
 $(document).ready(function () {

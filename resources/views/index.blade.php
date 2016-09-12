@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>LAA管理系统</title>
     <link rel="stylesheet" href="{{ elixir('css/core.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ elixir('css/plugin.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}" type="text/css"/>
     <base href="/">
 </head>
@@ -68,6 +69,7 @@
 </div>
 
 <script type="text/javascript" src="{{ elixir('js/core.js') }}"></script>
+<script type="text/javascript" src="{{ elixir('js/plugin.js') }}"></script>
 <script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 var elixir = require('laravel-elixir');
+var fs = require('fs');
 
 /*
  |--------------------------------------------------------------------------
@@ -10,6 +11,23 @@ var elixir = require('laravel-elixir');
  | file for our application, as well as publishing vendor resources.
  |
  */
+
+// 处理插件
+var plugins = {
+    'css': [],
+    'js': [
+        'resources/assets/js/plugin.js'
+    ]
+};
+var installed = require('./vendor/composer/installed.json');
+for (var i in installed) {
+    var plugin = installed[i];
+    if (plugin['type'] != 'laa-plugin') continue;
+
+    var path = 'vendor/' + plugin['name'] + '/assets/';
+    if (fs.existsSync(path + 'plugin.css')) plugins['css'].push(path + 'plugin.css');
+    if (fs.existsSync(path + 'plugin.js')) plugins['js'].push(path + 'plugin.js');
+}
 
 elixir(function (mix) {
     mix.task('browserify', 'resources/assets/js/app/**/*.js');
@@ -52,6 +70,8 @@ elixir(function (mix) {
             'public/js/core.js',
             'bower_components'
         )
+        .styles(plugins.css, 'public/css/plugin.css', './')
+        .scripts(plugins.js, 'public/js/plugin.js', './')
         .copy(
             [
                 'bower_components/AdminLTE/bootstrap/fonts',
@@ -65,8 +85,10 @@ elixir(function (mix) {
             [
                 'css/core.css',
                 'css/app.css',
+                'css/plugin.css',
                 'js/core.js',
-                'js/app.js'
+                'js/app.js',
+                'js/plugin.js'
             ]
         )
         .copy(
