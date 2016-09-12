@@ -25,7 +25,7 @@ Route::group(['prefix' => 'app'], function () {
 
 });
 
-// 认证相关模块
+// 系统核心模块
 Route::get('auth/user', 'AuthController@showUser');
 Route::get('auth/menu', 'AuthController@showMenu');
 Route::get('auth/check', 'AuthController@check');
@@ -33,9 +33,18 @@ Route::post('auth/login', 'AuthController@login');
 Route::post('auth/register', 'AuthController@register');
 Route::get('auth/logout', 'AuthController@logout');
 
-// 功能模块接口
+// 插件模块
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::resource('menu', 'MenuController');
+    $path = app('request')->path();
 
+    $route = explode('/', $path);
+    $group = $route[0];
+    $name = $route[1];
+
+    $controller = '\\Laa\\' . studly_case(strtolower($group)) . '\\' . studly_case(strtolower($name)) . '\\Controller';
+
+    if (class_exists($controller)) {
+        Route::resource("{$group}/{$name}", $controller);
+    }
 });
