@@ -16,4 +16,10 @@ angular.module('app.configs', [
             update: {method: 'PUT'},
             delete: {method: 'DELETE'}
         };
+    })
+    .config(function (markedProvider) {
+        markedProvider.setOptions({
+            gfm: true,
+            tables: true
+        });
     });
