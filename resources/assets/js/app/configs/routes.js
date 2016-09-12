@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.configs.routes', [])
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('', '/');
         $urlRouterProvider.otherwise('/404');
 
@@ -93,4 +93,4 @@ angular.module('app.configs.routes', [])
                     }
                 }
             });
-    });
+    }]);

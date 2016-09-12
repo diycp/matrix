@@ -2,7 +2,7 @@
 
 angular.module('app.services', [])
 // 认证模块
-    .service('auth', function ($resource, $http, $injector, $q, $templateCache, $state, appServices) {
+    .service('auth', ['$http', '$q', '$state', 'appServices', function ($http, $q, $state, appServices) {
         this.data = {};
         this.init = function () {
             let that = this;
@@ -63,14 +63,13 @@ angular.module('app.services', [])
                         return service.clear();
                     }
                 });
-                // $templateCache.removeAll();
                 $state.go('login');
             });
         };
-    })
+    }])
 
     // 系统菜单
-    .service('menu', function ($resource) {
+    .service('menu', ['$resource', function ($resource) {
         this.api = $resource('/menu/:id', {id: '@id'});
         this.data = [];
         this.init = function () {
@@ -87,4 +86,4 @@ angular.module('app.services', [])
             });
             console.log('service menu delete');
         }
-    });
+    }]);

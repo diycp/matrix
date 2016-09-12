@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.directives', [])
-    .directive('appInclude', function ($templateRequest, $anchorScroll, $animate) {
+    .directive('appInclude', ['$templateRequest', '$anchorScroll', '$animate', function ($templateRequest, $anchorScroll, $animate) {
         return {
             restrict: 'ECA',
             priority: 400,
@@ -90,8 +90,8 @@ angular.module('app.directives', [])
                 };
             }
         };
-    })
-    .directive('appInclude', function ($compile) {
+    }])
+    .directive('appInclude', ['$compile', function ($compile) {
         return {
             restrict: 'ECA',
             priority: -400,
@@ -112,8 +112,8 @@ angular.module('app.directives', [])
                 $compile($element.contents())(scope);
             }
         };
-    })
-    .directive('appMenu', function ($filter) {
+    }])
+    .directive('appMenu', ['$filter', function ($filter) {
         return {
             template: `
 <ul class="sidebar-menu">
@@ -153,7 +153,7 @@ angular.module('app.directives', [])
                 });
             }
         };
-    })
+    }])
     .directive('appMenuChild', function () {
         return {
             template: `

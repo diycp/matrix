@@ -2,7 +2,7 @@
 
 angular.module('app.controllers.modules', [])
 // 菜单管理
-    .controller('MenuIndexCtrl', function ($scope, $q, appServices, DTOptionsBuilder) {
+    .controller('MenuIndexCtrl', ['$scope', '$q', 'appServices', 'DTOptionsBuilder', function ($scope, $q, appServices, DTOptionsBuilder) {
         appServices.init('menu');
 
         $scope.options = DTOptionsBuilder.newOptions()
@@ -15,4 +15,4 @@ angular.module('app.controllers.modules', [])
                 });
                 return nRow;
             });
-    });
+    }]);

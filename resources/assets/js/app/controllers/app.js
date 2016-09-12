@@ -2,7 +2,7 @@
 
 angular.module('app.controllers.app', [])
 // header头部部分
-    .controller('HeaderCtrl', function ($scope, $cookies) {
+    .controller('HeaderCtrl', ['$scope', '$cookies', function ($scope, $cookies) {
         // 主题列表
         $scope.themeClass = [
             'skin-blue',
@@ -28,9 +28,9 @@ angular.module('app.controllers.app', [])
         };
         // 初始化主题
         $scope.themeEnable($cookies.get('theme-enabled-name') || 'skin-purple-light');
-    })
+    }])
     // 路由映射页面
-    .controller('MapCtrl', function ($rootScope, $scope, $state, $stateParams, $location) {
+    .controller('MapCtrl', ['$rootScope', '$scope', '$state', '$stateParams', '$location', function ($rootScope, $scope, $state, $stateParams, $location) {
         $scope.template = $location.url();
         $scope.route = $stateParams;
 
@@ -45,13 +45,13 @@ angular.module('app.controllers.app', [])
             if (response && response.status == 500) return $state.go('app.500');
             $state.go('app.404');
         };
-    })
+    }])
     // 首页
-    .controller('IndexCtrl', function ($scope) {
+    .controller('IndexCtrl', ['$scope', function ($scope) {
         $scope.text = '# markdown';
-    })
+    }])
     // 注册页面
-    .controller('RegisterCtrl', function ($scope, $q, appServices) {
+    .controller('RegisterCtrl', ['$scope', '$q', 'appServices', function ($scope, $q, appServices) {
         $scope.data = {};
 
         // 验证邮箱字段
@@ -64,9 +64,9 @@ angular.module('app.controllers.app', [])
         $scope.checkPassword = function (str) {
             return /^\w{6,30}$/.test(str);
         };
-    })
+    }])
     // 登录页面
-    .controller('LoginCtrl', function ($scope, $q, appServices) {
+    .controller('LoginCtrl', ['$scope', '$q', 'appServices', function ($scope, $q, appServices) {
         $scope.data = {};
 
         // 验证邮箱字段
@@ -79,7 +79,7 @@ angular.module('app.controllers.app', [])
         $scope.checkPassword = function (str) {
             return /^\w{6,30}$/.test(str);
         };
-    })
+    }])
     // 锁屏页面
     .controller('LockCtrl', function () {
 

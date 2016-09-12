@@ -5,10 +5,10 @@ import './configs/routes.js';
 angular.module('app.configs', [
     'app.configs.routes'
 ])
-    .config(function ($httpProvider) {
+    .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('appHttpInterceptor');
-    })
-    .config(function ($resourceProvider) {
+    }])
+    .config(['$resourceProvider', function ($resourceProvider) {
         $resourceProvider.defaults.actions = {
             create: {method: 'POST'},
             get: {method: 'GET', params: {dataType: 'json'}},
@@ -16,10 +16,10 @@ angular.module('app.configs', [
             update: {method: 'PUT'},
             delete: {method: 'DELETE'}
         };
-    })
-    .config(function (markedProvider) {
+    }])
+    .config(['markedProvider', function (markedProvider) {
         markedProvider.setOptions({
             gfm: true,
             tables: true
         });
-    });
+    }]);

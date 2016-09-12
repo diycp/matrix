@@ -4,7 +4,7 @@ import './controllers/app.js';
 import './controllers/modules.js';
 
 angular.module('app.controllers', ['app.controllers.app', 'app.controllers.modules'])
-    .controller('AllCtrl', function ($rootScope, $scope, appServices, DTDefaultOptions) {
+    .controller('AllCtrl', ['$rootScope', '$scope', 'appServices', 'DTDefaultOptions', function ($rootScope, $scope, appServices, DTDefaultOptions) {
         $scope.services = appServices;
         $scope.services.init('auth');
 
@@ -30,7 +30,7 @@ angular.module('app.controllers', ['app.controllers.app', 'app.controllers.modul
 
         // 监听路由变化
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            if(!angular.isObject($scope.services.auth.data.user)) $scope.services.init('auth');
+            if (!angular.isObject($scope.services.auth.data.user)) $scope.services.init('auth');
 
             angular.forEach($scope.bodyClassExtend, function (extend, value) {
                 $scope.bodyClass[value] = (toState.name == extend.name || toState.url == extend.url);
@@ -66,4 +66,4 @@ angular.module('app.controllers', ['app.controllers.app', 'app.controllers.modul
                 "sSortDescending": ": activate to sort column descending"
             }
         });
-    });
+    }]);

@@ -2,7 +2,7 @@
 
 angular.module('app.factorys', [])
 // $http拦截器，用于监听$http请求
-    .factory('appHttpInterceptor', function ($q, $injector, $timeout) {
+    .factory('appHttpInterceptor', ['$q', '$injector', '$timeout', function ($q, $injector, $timeout) {
         return {
             'responseError': function (response) {
                 if (response.status == 401) {
@@ -25,10 +25,10 @@ angular.module('app.factorys', [])
                 return $q.reject(config);
             }
         };
-    })
+    }])
 
     // service加载器
-    .factory('appServices', function ($injector) {
+    .factory('appServices', ['$injector', function ($injector) {
         return {
             init: function (name, params) {
                 let service = $injector.get(name);
@@ -41,7 +41,7 @@ angular.module('app.factorys', [])
                 return null;
             }
         };
-    })
+    }])
 
     // 数据转换
     .factory('appConvert', function () {
