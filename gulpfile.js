@@ -40,6 +40,7 @@ elixir(function (mix) {
                 'angular-ui-validate/dist/validate.js',
                 'angular-fullscreen/src/angular-fullscreen.js',
                 'marked/lib/marked.js',
+                'angular-marked/dist/angular-marked.js',
                 'AdminLTE/bootstrap/js/bootstrap.js',
                 'AdminLTE/plugins/slimScroll/jquery.slimscroll.js',
                 'AdminLTE/plugins/datatables/jquery.dataTables.js',

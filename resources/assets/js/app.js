@@ -16,6 +16,7 @@ const app = angular.module('app', [
     'ui.validate',
     'FBAngular',
     'datatables',
+    'hc.marked',
     'app.modules'
 ]);
 

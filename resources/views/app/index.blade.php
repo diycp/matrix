@@ -13,5 +13,5 @@
 
 <section class="content">
     <textarea ng-model="text" style="width:100%;min-height:300px;"></textarea>
-    <app-markdown data="text"></app-markdown>
+    <div marked="text" class="markdown"></div>
 </section>

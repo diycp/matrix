@@ -180,24 +180,4 @@ angular.module('app.directives', [])
             }
         };
     })
-    .directive('appMarkdown', function ($filter) {
-        return {
-            template: '<div class="markdown" ng-bind-html="markdown"></div>',
-            restrict: 'EA',
-            replace: true,
-            scope: {
-                data: '=',
-                option: '='
-            },
-            link: function (scope) {
-                let markdown = $filter('markdown');
-                scope.$watch('data', function (n, o) {
-                    scope.markdown = markdown(scope.data, scope.option);
-                });
-                scope.$watch('option', function (n, o) {
-                    scope.markdown = markdown(scope.data, scope.option);
-                });
-            }
-        };
-    })
 ;

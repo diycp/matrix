@@ -43,8 +43,18 @@ Route::group(['middleware' => 'auth'], function () {
     $name = $route[1];
 
     $controller = '\\Laa\\' . studly_case(strtolower($group)) . '\\' . studly_case(strtolower($name)) . '\\Controller';
-
     if (class_exists($controller)) {
+        // 反解析类
+        $object = new \ReflectionClass($controller);
+        $pluginPath = dirname(dirname($object->getFileName())); //插件根目录
+
+        // 设置插件模板根目录
+        config([
+            'view.paths' => [
+                realpath($pluginPath . '/views')
+            ],
+        ]);
+
         Route::resource("{$group}/{$name}", $controller);
     }
 });
