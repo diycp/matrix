@@ -38,23 +38,26 @@ Route::group(['middleware' => 'auth'], function () {
 
     $path = app('request')->path();
 
-    $route = explode('/', $path);
-    $group = $route[0];
-    $name = $route[1];
+    $route = explode('/', $path, 2);
 
-    $controller = '\\Laa\\' . studly_case(strtolower($group)) . '\\' . studly_case(strtolower($name)) . '\\Controller';
-    if (class_exists($controller)) {
-        // 反解析类
-        $object = new \ReflectionClass($controller);
-        $pluginPath = dirname(dirname($object->getFileName())); //插件根目录
+    if (count($route) == 2) {
+        $group = $route[0];
+        $name = $route[1];
 
-        // 设置插件模板根目录
-        config([
-            'view.paths' => [
-                realpath($pluginPath . '/views')
-            ],
-        ]);
+        $controller = '\\Laa\\' . studly_case(strtolower($group)) . '\\' . studly_case(strtolower($name)) . '\\Controller';
+        if (class_exists($controller)) {
+            // 反解析类
+            $object = new \ReflectionClass($controller);
+            $pluginPath = dirname(dirname($object->getFileName())); //插件根目录
 
-        Route::resource("{$group}/{$name}", $controller);
+            // 设置插件模板根目录
+            config([
+                'view.paths' => [
+                    realpath($pluginPath . '/views')
+                ],
+            ]);
+
+            Route::resource("{$group}/{$name}", $controller);
+        }
     }
 });
