@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>LAA管理系统</title>
+    <meta name="author" content="wangdong">
+    <title>{{ config('laa.name') }}</title>
     <link rel="stylesheet" href="{{ elixir('css/core.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ elixir('css/plugin.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}" type="text/css"/>
