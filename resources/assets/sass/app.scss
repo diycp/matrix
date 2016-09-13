@@ -70,3 +70,76 @@ label.has-error.control-label {
     border-bottom: 2px solid #ddd;
   }
 }
+
+//angular-material-data-table插件样式
+md-card {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+md-toolbar.md-table-toolbar.ng-hide {
+  display: none;
+}
+
+md-toolbar.md-table-toolbar.alternate .md-toolbar-tools {
+  color: #1e88e5;
+  font-size: 16px;
+  background-color: #e3f2fd;
+}
+
+md-toolbar.md-table-toolbar form {
+  margin-left: 16px;
+}
+
+md-toolbar.md-table-toolbar form > input {
+  width: 100%;
+  margin: 0;
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+md-toolbar.md-table-toolbar form > input:focus {
+  outline: none;
+}
+
+md-dialog > md-dialog-content.md-dialog-content {
+  padding-bottom: 0;
+}
+
+md-dialog > md-dialog-content > p {
+  margin: 16px 0;
+  color: rgba(0, 0, 0, 0.54);
+  line-height: 22px;
+}
+
+md-dialog > md-dialog-content > p.md-warn {
+  color: #f44336;
+}
+
+md-dialog > md-dialog-content > form:last-child > md-input-container:last-child {
+  padding-bottom: 0;
+}
+
+md-dialog > .md-actions > .md-button {
+  min-width: 60px;
+}
+
+md-dialog[delete-dialog] {
+  max-width: 300px;
+}
+
+md-dialog[add-item-dialog] > md-dialog-content > form > .input-row {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+md-dialog[add-item-dialog] > md-dialog-content > form > .input-row > md-input-container {
+  min-width: 120px;
+}
+
+.md-table-pagination .label {
+  color: rgba(0, 0, 0, .54);
+}
