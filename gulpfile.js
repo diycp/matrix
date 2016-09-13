@@ -38,12 +38,14 @@ elixir(function (mix) {
         .styles(
             [
                 'AdminLTE/bootstrap/css/bootstrap.css',
-                'AdminLTE/plugins/datatables/dataTables.bootstrap.css',
                 'AdminLTE/dist/css/AdminLTE.css',
                 'AdminLTE/dist/css/skins/_all-skins.css',
                 'font-awesome/css/font-awesome.css',
                 'Ionicons/css/ionicons.css',
-                'toastr/toastr.css'
+                'toastr/toastr.css',
+                'angular-material/angular-material.css',
+                'angular-material-data-table/dist/md-data-table.css',
+                'jquery-confirm2/css/jquery-confirm.css'
             ],
             'public/css/core.css',
             'bower_components'
@@ -56,6 +58,7 @@ elixir(function (mix) {
                 'angular-animate/angular-animate.js',
                 'angular-cookies/angular-cookies.js',
                 'angular-sanitize/angular-sanitize.js',
+                'angular-aria/angular-aria.js',
                 'angular-ui-router/release/angular-ui-router.js',
                 'angular-ui-validate/dist/validate.js',
                 'angular-fullscreen/src/angular-fullscreen.js',
@@ -63,11 +66,11 @@ elixir(function (mix) {
                 'angular-marked/dist/angular-marked.js',
                 'AdminLTE/bootstrap/js/bootstrap.js',
                 'AdminLTE/plugins/slimScroll/jquery.slimscroll.js',
-                'AdminLTE/plugins/datatables/jquery.dataTables.js',
-                'AdminLTE/plugins/datatables/dataTables.bootstrap.js',
                 'AdminLTE/dist/js/app.js',
-                'angular-datatables/dist/angular-datatables.js',
-                'toastr/toastr.js'
+                'toastr/toastr.js',
+                'angular-material/angular-material.js',
+                'angular-material-data-table/dist/md-data-table.js',
+                'jquery-confirm2/js/jquery-confirm.js'
             ],
             'public/js/core.js',
             'bower_components'

@@ -3,7 +3,7 @@
 import './controllers/app.js';
 
 angular.module('app.controllers', ['app.controllers.app'])
-    .controller('AllCtrl', ['$rootScope', '$scope', 'appServices', 'DTDefaultOptions', function ($rootScope, $scope, appServices, DTDefaultOptions) {
+    .controller('AllCtrl', ['$rootScope', '$scope', 'appServices', function ($rootScope, $scope, appServices) {
         $scope.services = appServices;
         $scope.services.init('auth');
 
@@ -41,28 +41,4 @@ angular.module('app.controllers', ['app.controllers.app'])
             $.AdminLTE.layout.activate();
         });
 
-        // 设置datatable中文显示
-        DTDefaultOptions.setLanguage({
-            "sEmptyTable": "No data available in table",
-            "sInfo": "显示 _START_ 到 _END_ 共 _TOTAL_ 条",
-            "sInfoEmpty": "显示 0 到 0 共 0 条",
-            "sInfoFiltered": "（总数 _MAX_ 条中搜索）",
-            "sInfoPostFix": "",
-            "sInfoThousands": ",",
-            "sLengthMenu": "每页 _MENU_ 条",
-            "sLoadingRecords": "Loading...",
-            "sProcessing": "Processing...",
-            "sSearch": "搜索：",
-            "sZeroRecords": "没有获取到数据",
-            "oPaginate": {
-                "sFirst": "首页",
-                "sLast": "尾页",
-                "sNext": "下一页",
-                "sPrevious": "上一页"
-            },
-            "oAria": {
-                "sSortAscending": ": activate to sort column ascending",
-                "sSortDescending": ": activate to sort column descending"
-            }
-        });
     }]);

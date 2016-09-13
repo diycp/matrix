@@ -37,10 +37,9 @@ Route::get('auth/logout', 'AuthController@logout');
 Route::group(['middleware' => 'auth'], function () {
 
     $path = app('request')->path();
+    $route = explode('/', $path);
 
-    $route = explode('/', $path, 2);
-
-    if (count($route) == 2) {
+    if (count($route) >= 2) {
         $group = $route[0];
         $name = $route[1];
 

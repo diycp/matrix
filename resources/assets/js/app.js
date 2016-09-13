@@ -12,11 +12,13 @@ angular.module('app', [
     'ngAnimate',
     'ngCookies',
     'ngSanitize',
+    'ngAria',
     'ui.router',
     'ui.validate',
     'FBAngular',
-    'datatables',
     'hc.marked',
+    'ngMaterial',
+    'md.data.table',
     'app.modules'
 ]);
 
