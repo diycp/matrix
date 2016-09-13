@@ -143,3 +143,13 @@ md-dialog[add-item-dialog] > md-dialog-content > form > .input-row > md-input-co
 .md-table-pagination .label {
   color: rgba(0, 0, 0, .54);
 }
+
+.md-toolbar-tools.layout-align-space-between-stretch {
+  line-height: 64px;
+
+  button {
+    padding: 0;
+    margin: 12px 0 0 !important;
+    line-height: 40px;
+  }
+}
