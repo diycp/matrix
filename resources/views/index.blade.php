@@ -13,7 +13,7 @@
 <body ng-class="bodyClass">
 <!--[if lt IE 9]>
 <script>
-    document.body.innerHTML = '当前浏览器版本过低，暂不支持！';
+    document.body.innerHTML = '<h4>当前浏览器版本过低，暂不支持访问！</h4>';
     window.stop();
 </script>
 <![endif]-->

@@ -97,7 +97,7 @@ angular.module('app.directives', [])
             priority: -400,
             require: 'appInclude',
             link: function (scope, $element, $attr, ctrl) {
-                if (toString.call($element[0]).match(/SVG/)) {
+                if ($element[0].toString().match(/SVG/)) {
                     $element.empty();
                     $compile(jqLiteBuildFragment(ctrl.template, window.document).childNodes)(
                         scope,
