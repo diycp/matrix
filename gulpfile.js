@@ -14,11 +14,11 @@ var fs = require('fs');
 
 // 处理插件
 var plugins = {
-    'css': [
-        'resources/assets/css/plugin.css'
+    'scss': [
+        'plugin.scss'
     ],
     'js': [
-        'resources/assets/js/plugin.js'
+        'plugin.js'
     ]
 };
 var installed = require('./vendor/composer/installed.json');
@@ -27,8 +27,9 @@ for (var i in installed) {
     if (plugin['type'] != 'matrix-plugin') continue;
 
     var path = 'vendor/' + plugin['name'] + '/assets/';
-    if (fs.existsSync(path + 'plugin.css')) plugins['css'].push(path + 'plugin.css');
-    if (fs.existsSync(path + 'plugin.js')) plugins['js'].push(path + 'plugin.js');
+    var prefix = '../../../';
+    if (fs.existsSync(path + 'plugin.scss')) plugins['scss'].push(prefix + path + 'plugin.scss');
+    if (fs.existsSync(path + 'plugin.js')) plugins['js'].push(prefix + path + 'plugin.js');
 }
 
 elixir(function (mix) {
@@ -75,9 +76,8 @@ elixir(function (mix) {
             'public/js/core.js',
             'bower_components'
         )
-        .styles(plugins.css, 'public/css/plugin.css', './')
-        .scripts(plugins.js, 'public/js/plugin.es5.js', './')
-        .browserify('../../../public/js/plugin.es5.js', 'public/js/plugin.js')
+        .sass(plugins.scss, 'public/css/plugin.css')
+        .browserify(plugins.js, 'public/js/plugin.js')
         .copy(
             [
                 'bower_components/AdminLTE/bootstrap/fonts',
