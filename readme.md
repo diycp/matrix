@@ -1,5 +1,5 @@
-# laa
-Laravel + Angular.js + AdminLTE
+# MATRIX
+基于Laravel + Angular.js + AdminLTE开发
 
 > 环境要求
 - node.js >= 6.0 (建议)
@@ -13,8 +13,8 @@ npm install -g bower gulp
 ## 安装步骤
 ```
 # 克隆系统代码
-git clone https://code.aliyun.com/wangdong/laa.git
-cd laa
+git clone https://code.aliyun.com/wangdong/matrix.git
+cd matrix
 
 # 安装依赖包
 npm install
@@ -36,7 +36,7 @@ php artisan migrate --seed
 ```
 git pull
 bower install
-npm install
+composer update
 gulp
 php artisan migrate:refresh --seed
 ```
