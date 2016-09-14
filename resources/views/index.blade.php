@@ -6,8 +6,8 @@
     <meta name="author" content="wangdong">
     <title>{{ config('matrix.name') }}</title>
     <link rel="stylesheet" href="{{ elixir('css/core.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ elixir('css/plugin.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ elixir('css/plugin.css') }}" type="text/css"/>
     <base href="/">
 </head>
 <body ng-class="bodyClass">

@@ -8,7 +8,7 @@ angular.module('app.factorys', [])
                 if (response.status == 401) {
                     let $state = $injector.get('$state');
 
-                    if (!['login', 'register'].includes($state.current.name)) {
+                    if (jQuery.inArray($state.current.name, ['login', 'register']) < 0) {
                         $state.go('login');
                         toastr.error('请先登录');
                     }
