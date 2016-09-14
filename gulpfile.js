@@ -53,6 +53,7 @@ elixir(function (mix) {
         )
         .scripts(
             [
+                'es6-shim/es6-shim.js',
                 'jquery/dist/jquery.js',
                 'angular/angular.js',
                 'angular-resource/angular-resource.js',

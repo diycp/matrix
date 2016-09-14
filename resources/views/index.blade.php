@@ -11,6 +11,12 @@
     <base href="/">
 </head>
 <body ng-class="bodyClass">
+<!--[if lt IE 9]>
+<script>
+    document.body.innerHTML = '当前浏览器版本过低，暂不支持！';
+    window.stop();
+</script>
+<![endif]-->
 
 <div ui-view="layout">
     <div class="svg-icon-loader">

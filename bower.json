@@ -1,6 +1,7 @@
 {
   "name": "app",
   "dependencies": {
+    "es6-shim": "*",
     "jquery": "2.*",
     "angular": "1.*",
     "angular-resource": "1.*",
