@@ -38,7 +38,11 @@ class AuthController extends Controller
         // 获取插件列表
         $installed = json_decode($filesystem->get(base_path('vendor/composer/installed.json')), true);
 
-        $collect = collect($installed)->where('type', 'matrix-plugin');
+        $collect = collect($installed)->where('type', 'matrix-plugin')->filter(function ($item) {
+            // 过滤不显示菜单的插件
+            return array_get($item, 'extra.plugin.menu.status', true);
+        });
+
         $groups = $collect->pluck('extra.plugin.menu.group')->toArray();
         $prepend = [];
 
