@@ -19,31 +19,26 @@ npm install -g bower gulp
 
 ## 安装步骤
 ```
-# 克隆系统代码
-git clone https://code.aliyun.com/wangdong/matrix.git
+# 创建项目
+composer create-project wangdong/matrix matrix dev-master
+
 cd matrix
 
 # 安装依赖包
 npm install
 bower install
-composer install
 
 # 编译静态资源文件
 gulp  # 开发时建议使用监听模式 gulp watch
 
-# 修改配置文件
-cp .env.example .env
-php artisan key:generate
-
-# 初始化数据库
+# 修改.env配置，然后初始化数据库
 php artisan migrate --seed
 ```
 
 ## 升级步骤
 ```
-git pull
-bower install
 composer update
+bower install
 gulp
 php artisan migrate:refresh --seed
 ```
