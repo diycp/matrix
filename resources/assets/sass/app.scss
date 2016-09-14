@@ -1,0 +1,155 @@
+// 页面启动等待效果
+.svg-icon-loader {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+// 修复左侧菜单展开效果
+.sidebar-menu li.active > a > .pull-right-container > .fa-angle-left {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+// 登录注册页面样式
+.login-box-body, .register-box-body {
+  border: 1px solid #ddd;
+}
+
+// angular validation
+.ng-invalid.ng-dirty {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+
+  :focus {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+  }
+}
+
+label.has-error.control-label {
+  color: #a94442;
+}
+
+.markdown {
+  background-color: #fefefe;
+  padding: 10px;
+  //border: 1px solid #ccc;
+  border-radius: 4px;
+
+  table {
+    border: 1px solid #ddd;
+    background-color: transparent;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  table > thead > tr > th,
+  table > tbody > tr > th,
+  table > tfoot > tr > th,
+  table > thead > tr > td,
+  table > tbody > tr > td,
+  table > tfoot > tr > td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+  }
+  table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+  }
+}
+
+//angular-material-data-table插件样式
+md-card {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+md-toolbar.md-table-toolbar.ng-hide {
+  display: none;
+}
+
+md-toolbar.md-table-toolbar.alternate .md-toolbar-tools {
+  color: #1e88e5;
+  font-size: 16px;
+  background-color: #e3f2fd;
+}
+
+md-toolbar.md-table-toolbar form {
+  margin-left: 16px;
+}
+
+md-toolbar.md-table-toolbar form > input {
+  width: 100%;
+  margin: 0;
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+md-toolbar.md-table-toolbar form > input:focus {
+  outline: none;
+}
+
+md-dialog > md-dialog-content.md-dialog-content {
+  padding-bottom: 0;
+}
+
+md-dialog > md-dialog-content > p {
+  margin: 16px 0;
+  color: rgba(0, 0, 0, 0.54);
+  line-height: 22px;
+}
+
+md-dialog > md-dialog-content > p.md-warn {
+  color: #f44336;
+}
+
+md-dialog > md-dialog-content > form:last-child > md-input-container:last-child {
+  padding-bottom: 0;
+}
+
+md-dialog > .md-actions > .md-button {
+  min-width: 60px;
+}
+
+md-dialog[delete-dialog] {
+  max-width: 300px;
+}
+
+md-dialog[add-item-dialog] > md-dialog-content > form > .input-row {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+md-dialog[add-item-dialog] > md-dialog-content > form > .input-row > md-input-container {
+  min-width: 120px;
+}
+
+.md-table-pagination .label {
+  color: rgba(0, 0, 0, .54);
+}
+
+.md-toolbar-tools.layout-align-space-between-stretch {
+  line-height: 64px;
+
+  button {
+    padding: 0;
+    margin: 12px 0 0 !important;
+    line-height: 40px;
+  }
+}
