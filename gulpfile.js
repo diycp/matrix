@@ -72,7 +72,10 @@ elixir(function (mix) {
                 'AdminLTE/plugins/slimScroll/jquery.slimscroll.js',
                 'AdminLTE/dist/js/app.js',
                 'toastr/toastr.js',
-                'jquery-confirm2/js/jquery-confirm.js'
+                'jquery-confirm2/js/jquery-confirm.js',
+                'qrcode-generator/js/qrcode.js',
+                'qrcode-generator/js/qrcode_UTF8.js',
+                'angular-qrcode/angular-qrcode.js'
             ],
             'public/js/core.js',
             'bower_components'

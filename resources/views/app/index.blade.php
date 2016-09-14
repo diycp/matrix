@@ -13,7 +13,19 @@
     </section>
 
     <section class="content">
-        <textarea ng-model="text" style="width:100%;min-height:300px;"></textarea>
-        <div marked="text" class="markdown"></div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <qrcode data="@{{ text }}" size="200" download></qrcode>
+            </div>
+            <div class="col-md-12">
+                <textarea ng-model="text" style="width:100%;min-height:300px;border:none;resize: none;outline: none;"></textarea>
+            </div>
+            <div class="col-md-12">
+                <div marked="text" class="markdown" style="height: 500px;"></div>
+            </div>
+
+        </div>
+
     </section>
 </div>

@@ -8,6 +8,11 @@ import './app/directives.js';
 import './app/filters.js';
 
 angular.module('app', [
+    'app.bower',
+    'app.modules'
+]);
+
+angular.module('app.bower', [
     'ngResource',
     'ngAnimate',
     'ngCookies',
@@ -19,7 +24,7 @@ angular.module('app', [
     'hc.marked',
     'ngMaterial',
     'md.data.table',
-    'app.modules'
+    'monospaced.qrcode'
 ]);
 
 angular.module('app.modules', [
