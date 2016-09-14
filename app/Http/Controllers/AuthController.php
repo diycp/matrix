@@ -38,7 +38,7 @@ class AuthController extends Controller
         // 获取插件列表
         $installed = json_decode($filesystem->get(base_path('vendor/composer/installed.json')), true);
 
-        $collect = collect($installed)->where('type', 'laa-plugin');
+        $collect = collect($installed)->where('type', 'matrix-plugin');
         $groups = $collect->pluck('extra.plugin.menu.group')->toArray();
         $prepend = [];
 
@@ -67,7 +67,7 @@ class AuthController extends Controller
         $menus = $collect->map(function ($item) use ($groups) {
 
             // 生成链接
-            array_set($item, 'extra.plugin.menu.url', str_replace(['laa-plugin-', 'laa-'], '', $item['name']));
+            array_set($item, 'extra.plugin.menu.url', str_replace(['matrix-plugin-', 'matrix-'], '', $item['name']));
 
             // 24小时内安装的菜单显示new标签
             if (strtotime($item['time'] . '+ 1 day') > time()) {

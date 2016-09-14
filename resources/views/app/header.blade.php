@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a ng-href="@{{ '/' | url }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">{!! config('laa.header.logo.mini') !!}</span>
+        <span class="logo-mini">{!! config('matrix.header.logo.mini') !!}</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">{!! config('laa.header.logo.normal') !!}</span>
+        <span class="logo-lg">{!! config('matrix.header.logo.normal') !!}</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -16,20 +16,20 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
-                @if(config('laa.header.toolbar.lockscreen.status'))
+                @if(config('matrix.header.toolbar.lockscreen.status'))
                     <li data-toggle="tooltip" data-placement="bottom" title="锁屏">
                         <a href="@{{ '/lock' | url }}"><i class="ion ion-lock-combination"></i></a>
                     </li>
                 @endif
 
-                @if(config('laa.header.toolbar.fullscreen.status'))
+                @if(config('matrix.header.toolbar.fullscreen.status'))
                     <li data-toggle="tooltip" data-placement="bottom" title="全屏模式">
                         <a ng-click="toggleFullScreen()"><i class="fa"
                                                             ng-class="{'fa-expand': !isFullscreen, 'fa-compress': isFullscreen}"></i></a>
                     </li>
                 @endif
 
-                @if(config('laa.header.toolbar.user.status'))
+                @if(config('matrix.header.toolbar.user.status'))
                     <li class="dropdown user user-menu">
                         <a href="#/" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="img/user2-160x160.jpg" class="user-image" alt="User Image">
@@ -58,7 +58,7 @@
                     </li>
                 @endif
 
-                @if(config('laa.header.toolbar.theme.status'))
+                @if(config('matrix.header.toolbar.theme.status'))
                     <li class="dropdown tasks-menu" data-toggle="tooltip">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="ion ion-android-color-palette"></i>

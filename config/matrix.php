@@ -2,11 +2,11 @@
 
 return [
 
-    'name' => 'LAA管理系统',
+    'name' => 'MATRIX',
     'header' => [
         'logo' => [
-            'mini' => '<b>LAA</b>',
-            'normal' => '<b>LAA</b>管理系统',
+            'mini' => '<b>M</b>',
+            'normal' => '<b>MATRIX</b>',
         ],
         'toolbar' => [
             'theme' => [
@@ -29,7 +29,7 @@ return [
     ],
     'footer' => [
         'version'=> '1.0.0',
-        'copyright' => '<strong>Copyright &copy; 2016 <a target="_blank" href="https://code.aliyun.com/wangdong/laa">wangdong</a>.</strong> All rights reserved.',
+        'copyright' => '<strong>Copyright &copy; 2016 <a target="_blank" href="https://wangdong.io">wangdong</a>.</strong> All rights reserved.',
     ]
 
 ];

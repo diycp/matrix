@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
         $group = $route[0];
         $name = $route[1];
 
-        $controller = '\\Laa\\' . studly_case(strtolower($group)) . '\\' . studly_case(strtolower($name)) . '\\Controller';
+        $controller = '\\Matrix\\' . studly_case(strtolower($group)) . '\\' . studly_case(strtolower($name)) . '\\Controller';
         if (class_exists($controller)) {
             // 反解析类
             $object = new \ReflectionClass($controller);

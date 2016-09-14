@@ -24,7 +24,7 @@ var plugins = {
 var installed = require('./vendor/composer/installed.json');
 for (var i in installed) {
     var plugin = installed[i];
-    if (plugin['type'] != 'laa-plugin') continue;
+    if (plugin['type'] != 'matrix-plugin') continue;
 
     var path = 'vendor/' + plugin['name'] + '/assets/';
     if (fs.existsSync(path + 'plugin.css')) plugins['css'].push(path + 'plugin.css');
