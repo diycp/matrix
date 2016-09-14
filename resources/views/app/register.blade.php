@@ -1,4 +1,4 @@
-<div class="register-box">
+<div class="register-box" ng-controller="RegisterCtrl">
     {{--<div class="register-logo">--}}
     {{--<a ng-href="@{{ '/' | url }}"><b>Admin</b>LTE</a>--}}
     {{--</div>--}}

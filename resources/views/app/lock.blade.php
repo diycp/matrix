@@ -1,4 +1,4 @@
-<div class="lockscreen-wrapper">
+<div class="lockscreen-wrapper" ng-controller="LockCtrl">
     <div class="lockscreen-logo">
         <a ng-href="@{{ '/' | url }}"><b>Admin</b>LTE</a>
     </div>

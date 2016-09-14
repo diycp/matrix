@@ -20,8 +20,7 @@ angular.module('app.configs.routes', [])
 `,
                     },
                     'header@app': {
-                        templateUrl: '/app/header',
-                        controller: 'HeaderCtrl'
+                        templateUrl: '/app/header'
                     },
                     'menu@app': {
                         templateUrl: '/app/menu'
@@ -35,8 +34,7 @@ angular.module('app.configs.routes', [])
                 url: '/login',
                 views: {
                     'layout': {
-                        templateUrl: '/app/login',
-                        controller: 'LoginCtrl'
+                        templateUrl: '/app/login'
                     }
                 }
             })
@@ -44,8 +42,7 @@ angular.module('app.configs.routes', [])
                 url: '/register',
                 views: {
                     'layout': {
-                        templateUrl: '/app/register',
-                        controller: 'RegisterCtrl'
+                        templateUrl: '/app/register'
                     }
                 }
             })
@@ -53,8 +50,7 @@ angular.module('app.configs.routes', [])
                 url: '/lock',
                 views: {
                     'layout': {
-                        templateUrl: '/app/lock',
-                        controller: 'LockCtrl'
+                        templateUrl: '/app/lock'
                     }
                 }
             })
@@ -62,8 +58,7 @@ angular.module('app.configs.routes', [])
                 url: '/',
                 views: {
                     'main@app': {
-                        templateUrl: '/app/index',
-                        controller: 'IndexCtrl'
+                        templateUrl: '/app/index'
                     }
                 }
             })
@@ -88,8 +83,7 @@ angular.module('app.configs.routes', [])
                 url: '/*map',
                 views: {
                     'main@app': {
-                        templateUrl: '/app/map',
-                        controller: 'MapCtrl'
+                        templateUrl: '/app/map'
                     }
                 }
             });

@@ -1,4 +1,4 @@
-<header class="main-header">
+<header class="main-header" ng-controller="HeaderCtrl">
     <!-- Logo -->
     <a ng-href="@{{ '/' | url }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->

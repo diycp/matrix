@@ -1,4 +1,4 @@
-<div class="login-box">
+<div class="login-box" ng-controller="LoginCtrl">
 {{--<div class="login-logo">--}}
 {{--<a ng-href="@{{ '/' | url }}"><b>Admin</b>LTE</a>--}}
 {{--</div>--}}
