@@ -5,6 +5,12 @@
 - node.js >= 6.0 (建议)
 - php >= 5.5.9
 
+## 仓库地址
+|名称|地址|
+| - | - |
+| github | https://github.com/repertory/matrix |
+| aliyun | https://code.aliyun.com/wangdong/matrix |
+
 ## 安装所需命令
 ```
 npm install -g bower gulp
