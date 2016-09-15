@@ -33,7 +33,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#/" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">@{{ services.auth.data.user.name }}</span>
+                            <span class="hidden-xs">@{{ services.matrix.data.user.name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -41,8 +41,8 @@
                                 <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    @{{ services.auth.data.user.email }}
-                                    <small>注册时间：@{{ services.auth.data.user.created_at }}</small>
+                                    @{{ services.matrix.data.user.email }}
+                                    <small>注册时间：@{{ services.matrix.data.user.created_at }}</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -51,7 +51,7 @@
                                     <a ng-href="@{{ '/profile' | url }}" class="btn btn-default btn-flat">个人资料</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a ng-click="services.auth.logout()" class="btn btn-default btn-flat">退出登录</a>
+                                    <a ng-click="services.matrix.logout()" class="btn btn-default btn-flat">退出登录</a>
                                 </div>
                             </li>
                         </ul>

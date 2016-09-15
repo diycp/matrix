@@ -4,27 +4,118 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Models\Menu;
 use App\Models\User;
 use Auth;
 use Illuminate\Filesystem\Filesystem;
 
-class AuthController extends Controller
+class MatrixController extends Controller
 {
-    private $request;
-
-    public function __construct(Request $request)
+    public function __construct()
     {
-        $this->middleware('auth', ['except' => ['check', 'login', 'register']]);
+        $this->middleware('auth', [
+            'only' => [
+                'getCheck',
+                'postLogin',
+                'postRegister'
+            ]
+        ]);
+    }
 
-        $this->request = $request;
+    /**
+     * 模板首页
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getIndex()
+    {
+        return view('matrix.index');
+    }
+
+    /**
+     * 模板头部
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getHeader()
+    {
+        return view('matrix.header');
+    }
+
+    /**
+     * 模板底部
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getFooter()
+    {
+        return view('matrix.footer');
+    }
+
+    /**
+     * 模板左侧菜单
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getAside()
+    {
+        return view('matrix.menu');
+    }
+
+    /**
+     * 模板路由映射
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getMap()
+    {
+        return view('matrix.map');
+    }
+
+    /**
+     * 模板404页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getEmpty()
+    {
+        return view('matrix.404');
+    }
+
+    /**
+     * 模板500页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getError()
+    {
+        return view('matrix.500');
+    }
+
+    /**
+     * 模板登录页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getLogin()
+    {
+        return view('matrix.login');
+    }
+
+    /**
+     * 模板注册页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getRegister()
+    {
+        return view('matrix.register');
+    }
+
+    /**
+     * 模板锁屏页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getLock()
+    {
+        return view('matrix.lock');
     }
 
     /**
      * 获取用户对应左侧菜单数据
      * @return mixed
      */
-    public function showUser()
+    public function getUser()
     {
         return Auth::user();
     }
@@ -33,7 +124,7 @@ class AuthController extends Controller
      * 获取用户对应左侧菜单数据
      * @return mixed
      */
-    public function showMenu(Filesystem $filesystem)
+    public function getMenu(Filesystem $filesystem)
     {
         // 获取插件列表
         $installed = json_decode($filesystem->get(base_path('vendor/composer/installed.json')), true);
@@ -98,10 +189,10 @@ class AuthController extends Controller
      * 验证是否存在
      * @return mixed
      */
-    public function check()
+    public function getCheck(Request $request)
     {
-        $field = $this->request->input('field');
-        $value = $this->request->input('value');
+        $field = $request->input('field');
+        $value = $request->input('value');
 
         if (!in_array($field, ['email', 'name'])) return abort(404);
 
@@ -113,11 +204,11 @@ class AuthController extends Controller
      * 用户注册
      * @return static
      */
-    public function register()
+    public function postRegister(Request $request)
     {
-        $name = $this->request->input('name');
-        $email = $this->request->input('email');
-        $password = $this->request->input('password');
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $password = $request->input('password');
 
         User::create([
             'name' => $name,
@@ -132,11 +223,11 @@ class AuthController extends Controller
      * 用户登录
      * @return mixed
      */
-    public function login()
+    public function postLogin(Request $request)
     {
-        $email = $this->request->input('email');
-        $password = $this->request->input('password');
-        $remember = $this->request->input('remember', false);
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $remember = $request->input('remember', false);
 
         $result = Auth::attempt(['email' => $email, 'password' => $password], $remember);
         return $result ? Auth::user() : abort(404);
@@ -146,7 +237,7 @@ class AuthController extends Controller
      * 注销登录
      * @return mixed
      */
-    public function logout()
+    public function getLogout()
     {
         return Auth::logout();
     }

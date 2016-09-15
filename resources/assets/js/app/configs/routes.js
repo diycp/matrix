@@ -20,13 +20,13 @@ angular.module('app.configs.routes', [])
 `,
                     },
                     'header@app': {
-                        templateUrl: '/app/header'
+                        templateUrl: '/matrix/header'
                     },
                     'menu@app': {
-                        templateUrl: '/app/menu'
+                        templateUrl: '/matrix/aside'
                     },
                     'footer@app': {
-                        templateUrl: '/app/footer'
+                        templateUrl: '/matrix/footer'
                     }
                 }
             })
@@ -34,7 +34,7 @@ angular.module('app.configs.routes', [])
                 url: '/login',
                 views: {
                     'layout': {
-                        templateUrl: '/app/login'
+                        templateUrl: '/matrix/login'
                     }
                 }
             })
@@ -42,7 +42,7 @@ angular.module('app.configs.routes', [])
                 url: '/register',
                 views: {
                     'layout': {
-                        templateUrl: '/app/register'
+                        templateUrl: '/matrix/register'
                     }
                 }
             })
@@ -50,7 +50,7 @@ angular.module('app.configs.routes', [])
                 url: '/lock',
                 views: {
                     'layout': {
-                        templateUrl: '/app/lock'
+                        templateUrl: '/matrix/lock'
                     }
                 }
             })
@@ -58,7 +58,7 @@ angular.module('app.configs.routes', [])
                 url: '/',
                 views: {
                     'main@app': {
-                        templateUrl: '/app/index'
+                        templateUrl: '/matrix/index'
                     }
                 }
             })
@@ -66,7 +66,7 @@ angular.module('app.configs.routes', [])
                 url: '/404',
                 views: {
                     'main@app': {
-                        templateUrl: '/app/404'
+                        templateUrl: '/matrix/empty'
                     }
                 }
             })
@@ -74,7 +74,7 @@ angular.module('app.configs.routes', [])
                 url: '/500',
                 views: {
                     'main@app': {
-                        templateUrl: '/app/500'
+                        templateUrl: '/matrix/error'
                     }
                 }
             })
@@ -83,7 +83,7 @@ angular.module('app.configs.routes', [])
                 url: '/*map',
                 views: {
                     'main@app': {
-                        templateUrl: '/app/map'
+                        templateUrl: '/matrix/map'
                     }
                 }
             });

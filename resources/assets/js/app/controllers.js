@@ -5,7 +5,7 @@ import './controllers/app.js';
 angular.module('app.controllers', ['app.controllers.app'])
     .controller('AllCtrl', ['$rootScope', '$scope', 'appServices', function ($rootScope, $scope, appServices) {
         $scope.services = appServices;
-        $scope.services.init('auth');
+        $scope.services.init('matrix');
 
         // body标签class属性
         $scope.bodyClass = {
@@ -29,7 +29,7 @@ angular.module('app.controllers', ['app.controllers.app'])
 
         // 监听路由变化
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            if (!angular.isObject($scope.services.auth.data.user)) $scope.services.init('auth');
+            if (!angular.isObject($scope.services.matrix.data.user)) $scope.services.init('matrix');
 
             angular.forEach($scope.bodyClassExtend, function (extend, value) {
                 $scope.bodyClass[value] = (toState.name == extend.name || toState.url == extend.url);

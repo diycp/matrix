@@ -7,7 +7,7 @@
                 <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>@{{ services.auth.data.user.name }}</p>
+                <p>@{{ services.matrix.data.user.name }}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -24,7 +24,7 @@
         </form>
         <!-- /.search form -->
 
-        <app-menu items="services.auth.data.menu" filter="@{{query}}"></app-menu>
+        <app-menu items="services.matrix.data.menu" filter="@{{query}}"></app-menu>
 
     </section>
     <!-- /.sidebar -->

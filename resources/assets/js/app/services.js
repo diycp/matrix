@@ -2,26 +2,26 @@
 
 angular.module('app.services', [])
 // 认证模块
-    .service('auth', ['$http', '$q', '$state', 'appServices', function ($http, $q, $state, appServices) {
+    .service('matrix', ['$http', '$q', '$state', 'appServices', function ($http, $q, $state, appServices) {
         this.data = {};
         this.init = function () {
             let that = this;
             // 获取用户信息
-            $http.get('/auth/user').success(function (user) {
+            $http.get('/matrix/user').success(function (user) {
                 that.data['user'] = user;
 
                 // 获取用户当前菜单
-                $http.get('/auth/menu').success(function (menu) {
+                $http.get('/matrix/menu').success(function (menu) {
                     that.data['menu'] = menu;
                 });
             });
-            console.log('service auth init');
+            console.log('service matrix init');
         };
         // 检测字段是否存在
         this.check = function (field, value) {
             let that = this;
             return $q(function (resolve, reject) {
-                $http.get('/auth/check?field=' + encodeURI(field) + '&value=' + encodeURI(value))
+                $http.get('/matrix/check?field=' + encodeURI(field) + '&value=' + encodeURI(value))
                     .success(function (data) {
                         data.exists ? resolve(data) : reject();
                     })
@@ -32,7 +32,7 @@ angular.module('app.services', [])
         };
         this.login = function (data) {
             let that = this;
-            $http.post('/auth/login', data).then(
+            $http.post('/matrix/login', data).then(
                 function () {
                     $state.go('app.index');
                 }, function () {
@@ -42,7 +42,7 @@ angular.module('app.services', [])
         };
         this.register = function (data) {
             let that = this;
-            $http.post('/auth/register', data).then(
+            $http.post('/matrix/register', data).then(
                 function () {
                     $state.go('app.index');
                 }, function () {
@@ -52,7 +52,7 @@ angular.module('app.services', [])
         };
         this.logout = function () {
             let that = this;
-            $http.get('/auth/logout').success(function () {
+            $http.get('/matrix/logout').success(function () {
                 angular.forEach(appServices, function (service, name) {
                     // 清除数据
                     if (angular.isArray(service.data)) service.data = [];

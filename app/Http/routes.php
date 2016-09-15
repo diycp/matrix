@@ -15,23 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-// 系统模板页面
-Route::group(['prefix' => 'app'], function () {
-
-    Route::get('{html}', function ($html) {
-        $view = "app.{$html}";
-        return view($view);
-    });
-
-});
-
-// 系统核心模块
-Route::get('auth/user', 'AuthController@showUser');
-Route::get('auth/menu', 'AuthController@showMenu');
-Route::get('auth/check', 'AuthController@check');
-Route::post('auth/login', 'AuthController@login');
-Route::post('auth/register', 'AuthController@register');
-Route::get('auth/logout', 'AuthController@logout');
+// 系统核心模块 (所有路由都可以使用插件进行覆盖)
+Route::controller('matrix', 'MatrixController');
 
 // 插件模块
 Route::group(['middleware' => 'auth'], function () {

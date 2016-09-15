@@ -57,7 +57,7 @@ angular.module('app.controllers.app', [])
         // 验证邮箱字段
         $scope.checkEmail = function (email) {
             return $q(function (resolve, reject) {
-                appServices.auth.check('email', email).then(reject, resolve);
+                appServices.matrix.check('email', email).then(reject, resolve);
             });
         };
         // 验证密码字段
@@ -72,7 +72,7 @@ angular.module('app.controllers.app', [])
         // 验证邮箱字段
         $scope.checkEmail = function (email) {
             return $q(function (resolve, reject) {
-                appServices.auth.check('email', email).then(resolve, reject);
+                appServices.matrix.check('email', email).then(resolve, reject);
             });
         };
         // 验证密码字段

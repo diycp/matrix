@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-6">
-                    <button ng-if="form.$valid" ng-click="services.auth.register(data)"
+                    <button ng-if="form.$valid" ng-click="services.matrix.register(data)"
                             class="btn btn-primary btn-block btn-flat">注册
                     </button>
                     <button ng-if="!form.$valid" class="btn btn-primary btn-block btn-flat">注册</button>

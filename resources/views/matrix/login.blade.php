@@ -24,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-6">
-                    <button ng-if="form.$valid" ng-click="services.auth.login(data)"
+                    <button ng-if="form.$valid" ng-click="services.matrix.login(data)"
                             class="btn btn-primary btn-block btn-flat">登录
                     </button>
                     <button ng-if="!form.$valid" class="btn btn-primary btn-block btn-flat">登录</button>
