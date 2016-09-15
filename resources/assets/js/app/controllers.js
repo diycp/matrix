@@ -1,9 +1,7 @@
 'use strict';
 
-import './controllers/app.js';
-
-angular.module('app.controllers', ['app.controllers.app'])
-    .controller('AllCtrl', ['$rootScope', '$scope', 'appServices', function ($rootScope, $scope, appServices) {
+angular.module('app.controllers', [])
+    .controller('AllCtrl', ['$rootScope', '$scope', '$state', 'appServices', function ($rootScope, $scope, $state, appServices) {
         $scope.services = appServices;
         $scope.services.init('matrix');
 
@@ -12,13 +10,6 @@ angular.module('app.controllers', ['app.controllers.app'])
             'hold-transition': true,
             'sidebar-mini': true,
             'fixed': false
-        };
-
-        // body标签class属性扩展
-        $scope.bodyClassExtend = {
-            'lockscreen': {
-                name: 'lock'
-            }
         };
 
         // 全屏模式
@@ -30,15 +21,31 @@ angular.module('app.controllers', ['app.controllers.app'])
         // 监听路由变化
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             if (!angular.isObject($scope.services.matrix.data.user)) $scope.services.init('matrix');
-
-            angular.forEach($scope.bodyClassExtend, function (extend, value) {
-                $scope.bodyClass[value] = (toState.name == extend.name || toState.url == extend.url);
-            });
         });
 
         // 监听视图渲染状态
         $scope.$on('$viewContentLoaded', function () {
             $.AdminLTE.layout.activate();
         });
+        
+        // 监听未登录状态
+        $rootScope.$on('event:unauthorized', function (event, state) {
+            $state.go('login');
+        });
 
+    }])
+    // 路由映射页面
+    .controller('MapCtrl', ['$scope', '$state', '$location', function ($scope, $state, $location) {
+        $scope.template = $location.url();
+
+        // 触发视图渲染完成事件
+        $scope.loaded = function () {
+            $scope.$emit('$viewContentLoaded', Object.keys($state.current.views)[0]);
+        };
+
+        // 触发模版加载失败事件
+        $scope.failed = function (response) {
+            if (response && response.status == 401) return false;
+            $state.go('app.error', {code: response.status});
+        };
     }]);

@@ -14,94 +14,11 @@ class MatrixController extends Controller
     {
         $this->middleware('auth', [
             'only' => [
-                'getIndex',
-                'getLock',
                 'getUser',
                 'getMenu',
                 'getLogout',
             ]
         ]);
-    }
-
-    /**
-     * 模板首页
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getIndex()
-    {
-        return view('matrix.index');
-    }
-
-    /**
-     * 模板头部
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getHeader()
-    {
-        return view('matrix.header');
-    }
-
-    /**
-     * 模板底部
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getFooter()
-    {
-        return view('matrix.footer');
-    }
-
-    /**
-     * 模板左侧菜单
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getAside()
-    {
-        return view('matrix.menu');
-    }
-
-    /**
-     * 模板路由映射
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getMap()
-    {
-        return view('matrix.map');
-    }
-
-    /**
-     * 模板404页面
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getEmpty()
-    {
-        return view('matrix.404');
-    }
-
-    /**
-     * 模板500页面
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getError()
-    {
-        return view('matrix.500');
-    }
-
-    /**
-     * 模板登录页面
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getLogin()
-    {
-        return view('matrix.login');
-    }
-
-    /**
-     * 模板注册页面
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getRegister()
-    {
-        return view('matrix.register');
     }
 
     /**
@@ -191,54 +108,6 @@ class MatrixController extends Controller
             ->pluck('extra.plugin.menu');
 
         return collect($prepend)->merge($menus)->all();
-    }
-
-    /**
-     * 验证是否存在
-     * @return mixed
-     */
-    public function getCheck(Request $request)
-    {
-        $field = $request->input('field');
-        $value = $request->input('value');
-
-        if (!in_array($field, ['email', 'name'])) return abort(404);
-
-        $count = User::where($field, $value)->count();
-        return ['exists' => $count > 0];
-    }
-
-    /**
-     * 用户注册
-     * @return static
-     */
-    public function postRegister(Request $request)
-    {
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $password = $request->input('password');
-
-        User::create([
-            'name' => $name,
-            'email' => $email,
-            'password' => bcrypt($password),
-        ]);
-
-        return $this->postLogin($request);
-    }
-
-    /**
-     * 用户登录
-     * @return mixed
-     */
-    public function postLogin(Request $request)
-    {
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $remember = $request->input('remember', true);
-
-        $result = Auth::attempt(['email' => $email, 'password' => $password], $remember);
-        return $result ? Auth::user() : abort(404);
     }
 
     /**

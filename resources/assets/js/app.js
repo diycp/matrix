@@ -35,7 +35,20 @@ angular.module('app.modules', [
     'app.directives',
     'app.filters',
     'app.plugins'
-]);
+])
+    .config(['$stateProvider', function ($stateProvider) {
+        // TODO 当前路由规则必须放到最后执行,否则容易出现冲突
+        $stateProvider
+            .state('app.map', {
+                url: '/*map',
+                views: {
+                    'main@app': {
+                        template: '<app-include ng-controller="MapCtrl" src="template" onload="loaded" onfail="failed">loading...</app-include>',
+                        controller: 'MapCtrl'
+                    }
+                }
+            });
+    }]);
 
 $(document).ready(function () {
     angular.bootstrap(document, ['app']);

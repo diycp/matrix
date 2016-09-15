@@ -1,10 +1,6 @@
 'use strict';
 
-import './configs/routes.js';
-
-angular.module('app.configs', [
-    'app.configs.routes'
-])
+angular.module('app.configs', [])
     .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('appHttpInterceptor');
     }])

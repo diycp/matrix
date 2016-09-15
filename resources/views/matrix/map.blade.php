@@ -1,1 +1,0 @@
-<app-include ng-controller="MapCtrl" src="template" onload="loaded" onfail="failed">loading...</app-include>

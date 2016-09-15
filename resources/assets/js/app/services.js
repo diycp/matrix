@@ -2,7 +2,7 @@
 
 angular.module('app.services', [])
 // 认证模块
-    .service('matrix', ['$http', '$q', '$state', 'appServices', function ($http, $q, $state, appServices) {
+    .service('matrix', ['$rootScope', '$http', '$state', 'appServices', function ($rootScope, $http, $state, appServices) {
         this.data = {};
         this.init = function () {
             let that = this;
@@ -17,39 +17,6 @@ angular.module('app.services', [])
             });
             console.log('service matrix init');
         };
-        // 检测字段是否存在
-        this.check = function (field, value) {
-            let that = this;
-            return $q(function (resolve, reject) {
-                $http.get('/matrix/check?field=' + encodeURI(field) + '&value=' + encodeURI(value))
-                    .success(function (data) {
-                        data.exists ? resolve(data) : reject();
-                    })
-                    .error(function () {
-                        reject();
-                    });
-            });
-        };
-        this.login = function (data) {
-            let that = this;
-            $http.post('/matrix/login', data).then(
-                function () {
-                    $state.go('app.index');
-                }, function () {
-                    toastr.error('登录失败');
-                }
-            );
-        };
-        this.register = function (data) {
-            let that = this;
-            $http.post('/matrix/register', data).then(
-                function () {
-                    $state.go('app.index');
-                }, function () {
-                    toastr.error('注册失败');
-                }
-            );
-        };
         this.logout = function () {
             let that = this;
             $http.get('/matrix/logout').success(function () {
@@ -63,7 +30,7 @@ angular.module('app.services', [])
                         return service.clear();
                     }
                 });
-                $state.go('login');
+                $rootScope.$emit('event:unauthorized', $state);
             });
         };
     }]);

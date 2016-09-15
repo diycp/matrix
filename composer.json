@@ -20,6 +20,13 @@
   "require": {
     "php": ">=5.5.9",
     "laravel/framework": "5.2.*",
+    "wangdong/matrix-plugin-login": "dev-master",
+    "wangdong/matrix-plugin-register": "dev-master",
+    "wangdong/matrix-plugin-header": "dev-master",
+    "wangdong/matrix-plugin-footer": "dev-master",
+    "wangdong/matrix-plugin-aside": "dev-master",
+    "wangdong/matrix-plugin-index": "dev-master",
+    "wangdong/matrix-plugin-error": "dev-master",
     "wangdong/matrix-plugin-about": "dev-master"
   },
   "require-dev": {

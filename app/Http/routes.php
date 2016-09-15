@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 // 插件模块
-Route::group(['middleware' => 'auth'], function () {
+//Route::group(['middleware' => 'auth'], function () {
 
     $path = app('request')->path();
     $route = explode('/', $path);
@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::resource("{$group}/{$name}", $controller);
         }
     }
-});
+//});
 
 // 系统核心模块 (所有路由都可以使用插件进行覆盖)
 Route::controller('matrix', 'MatrixController');

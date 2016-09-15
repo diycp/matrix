@@ -2,15 +2,14 @@
 
 angular.module('app.factorys', [])
 // $http拦截器，用于监听$http请求
-    .factory('appHttpInterceptor', ['$q', '$injector', '$timeout', function ($q, $injector, $timeout) {
+    .factory('appHttpInterceptor', ['$rootScope', '$q', '$injector', function ($rootScope, $q, $injector) {
         return {
             'responseError': function (response) {
                 if (response.status == 401) {
                     let $state = $injector.get('$state');
 
                     if (jQuery.inArray($state.current.name, ['login', 'register']) < 0) {
-                        $state.go('login');
-                        toastr.error('请先登录');
+                        $rootScope.$emit('event:unauthorized', $state);
                     }
                 }
                 return $q.reject(response);
