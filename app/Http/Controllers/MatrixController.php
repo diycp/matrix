@@ -164,9 +164,13 @@ class MatrixController extends Controller
         });
 
         $menus = $collect->map(function ($item) use ($groups) {
+            // 菜单路由根据命名空间生成
+            $namespace = trim(collect(array_get($item, 'autoload.psr-4', []))->keys()->first(), '\\');
+            $namespace = explode('\\', $namespace);
+            $url = count($namespace) > 2 ? snake_case($namespace[1]) . '/' . snake_case($namespace[2]) : '#';
 
             // 生成链接
-            array_set($item, 'extra.plugin.menu.url', str_replace(['matrix-plugin-', 'matrix-'], '', $item['name']));
+            array_set($item, 'extra.plugin.menu.url', $url);
 
             // 24小时内安装的菜单显示new标签
             if (strtotime($item['time'] . '+ 1 day') > time()) {
