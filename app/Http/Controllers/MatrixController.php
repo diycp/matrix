@@ -220,7 +220,7 @@ class MatrixController extends Controller
             'password' => bcrypt($password),
         ]);
 
-        return $this->postLogin();
+        return $this->postLogin($request);
     }
 
     /**
@@ -231,7 +231,7 @@ class MatrixController extends Controller
     {
         $email = $request->input('email');
         $password = $request->input('password');
-        $remember = $request->input('remember', false);
+        $remember = $request->input('remember', true);
 
         $result = Auth::attempt(['email' => $email, 'password' => $password], $remember);
         return $result ? Auth::user() : abort(404);
