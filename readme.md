@@ -1,8 +1,8 @@
+# MATRIX
+
 [![Latest Stable Version](https://poser.pugx.org/wangdong/matrix/v/stable)](https://packagist.org/packages/wangdong/matrix)
 [![Total Downloads](https://poser.pugx.org/wangdong/matrix/downloads)](https://packagist.org/packages/wangdong/matrix)
 [![License](https://poser.pugx.org/wangdong/matrix/license)](https://packagist.org/packages/wangdong/matrix)
-
-# MATRIX
 
 基于Laravel + Angular.js + AdminLTE开发
 
