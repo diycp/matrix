@@ -14,9 +14,11 @@ class MatrixController extends Controller
     {
         $this->middleware('auth', [
             'only' => [
-                'getCheck',
-                'postLogin',
-                'postRegister'
+                'getIndex',
+                'getLock',
+                'getUser',
+                'getMenu',
+                'getLogout',
             ]
         ]);
     }
@@ -110,6 +112,8 @@ class MatrixController extends Controller
     {
         return view('matrix.lock');
     }
+
+    // ==============  以下为接口功能 ====================
 
     /**
      * 获取用户对应左侧菜单数据
@@ -216,7 +220,7 @@ class MatrixController extends Controller
             'password' => bcrypt($password),
         ]);
 
-        return $this->login();
+        return $this->postLogin();
     }
 
     /**
