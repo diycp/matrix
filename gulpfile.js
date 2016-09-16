@@ -91,14 +91,28 @@ elixir(function (mix) {
             'public/fonts'
         )
         .copy('bower_components/AdminLTE/dist/img', 'public/img')
+        .styles(
+            [
+                'core.css',
+                'app.css',
+                'plugin.css'
+            ],
+            'public/css/matrix.css',
+            'public/css'
+        )
+        .scripts(
+            [
+                'core.js',
+                'plugin.js',
+                'app.js'
+            ],
+            'public/js/matrix.js',
+            'public/js'
+        )
         .version(
             [
-                'css/core.css',
-                'css/app.css',
-                'css/plugin.css',
-                'js/core.js',
-                'js/app.js',
-                'js/plugin.js'
+                'css/matrix.css',
+                'js/matrix.js'
             ]
         )
         .copy(

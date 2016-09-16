@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="author" content="wangdong">
     <title>{{ config('matrix.name') }}</title>
-    <link rel="stylesheet" href="{{ elixir('css/core.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ elixir('css/app.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ elixir('css/plugin.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ elixir('css/matrix.css') }}" type="text/css"/>
     <base href="/">
 </head>
 <body ng-class="bodyClass">
@@ -75,8 +73,6 @@
     </div>
 </div>
 
-<script type="text/javascript" src="{{ elixir('js/core.js') }}"></script>
-<script type="text/javascript" src="{{ elixir('js/plugin.js') }}"></script>
-<script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ elixir('js/matrix.js') }}"></script>
 </body>
 </html>
