@@ -32,6 +32,7 @@ angular.module('app.controllers', [])
         $rootScope.$on('event:unauthorized', function (event, state) {
             if (jQuery.inArray(state.current.name, ['login', 'register']) < 0) {
                 $state.go('login');
+                toastr.error('请先登录');
             }
         });
 
