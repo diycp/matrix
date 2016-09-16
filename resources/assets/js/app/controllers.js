@@ -27,10 +27,12 @@ angular.module('app.controllers', [])
         $scope.$on('$viewContentLoaded', function () {
             $.AdminLTE.layout.activate();
         });
-        
+
         // 监听未登录状态
         $rootScope.$on('event:unauthorized', function (event, state) {
-            $state.go('login');
+            if (jQuery.inArray(state.current.name, ['login', 'register']) < 0) {
+                $state.go('login');
+            }
         });
 
     }])

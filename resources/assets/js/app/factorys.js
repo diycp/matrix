@@ -7,10 +7,7 @@ angular.module('app.factorys', [])
             'responseError': function (response) {
                 if (response.status == 401) {
                     let $state = $injector.get('$state');
-
-                    if (jQuery.inArray($state.current.name, ['login', 'register']) < 0) {
-                        $rootScope.$emit('event:unauthorized', $state);
-                    }
+                    $rootScope.$emit('event:unauthorized', $state);
                 }
                 return $q.reject(response);
             },
