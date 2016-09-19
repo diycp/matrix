@@ -19,17 +19,22 @@ var plugins = {
     ],
     'js': [
         'plugin.js'
-    ]
+    ],
+    'img': [],
+    'fonts': []
 };
 var installed = require('./vendor/composer/installed.json');
 for (var i in installed) {
     var plugin = installed[i];
     if (plugin['type'] != 'matrix-plugin') continue;
 
-    var path = 'vendor/' + plugin['name'] + '/assets/';
+    var path = 'vendor/' + plugin['name'] + '/';
     var prefix = '../../../';
-    if (fs.existsSync(path + 'plugin.scss')) plugins['scss'].push(prefix + path + 'plugin.scss');
-    if (fs.existsSync(path + 'plugin.js')) plugins['js'].push(prefix + path + 'plugin.js');
+
+    if (fs.existsSync(path + 'assets/plugin.scss')) plugins['scss'].push(prefix + path + 'assets/plugin.scss');
+    if (fs.existsSync(path + 'assets/plugin.js')) plugins['js'].push(prefix + path + 'assets/plugin.js');
+    if (fs.existsSync(path + 'assets/img')) plugins['img'].push(path + 'assets/img');
+    if (fs.existsSync(path + 'assets/fonts')) plugins['fonts'].push(path + 'assets/fonts');
 }
 
 elixir(function (mix) {
@@ -80,8 +85,6 @@ elixir(function (mix) {
             'public/js/core.js',
             'bower_components'
         )
-        .sass(plugins.scss, 'public/css/plugin.css')
-        .browserify(plugins.js, 'public/js/plugin.js')
         .copy(
             [
                 'bower_components/AdminLTE/bootstrap/fonts',
@@ -91,6 +94,10 @@ elixir(function (mix) {
             'public/fonts'
         )
         .copy('bower_components/AdminLTE/dist/img', 'public/img')
+        .sass(plugins.scss, 'public/css/plugin.css')
+        .browserify(plugins.js, 'public/js/plugin.js')
+        .copy(plugins.img, 'public/img')
+        .copy(plugins.fonts, 'public/fonts')
         .styles(
             [
                 'core.css',
