@@ -51,8 +51,8 @@ class MatrixController extends Controller
         $installed = json_decode($filesystem->get(base_path('vendor/composer/installed.json')), true);
 
         // 合并本地插件
-        $pluginFiles = $filesystem->glob(base_path('matrix/*/*/composer.json'));
-        collect($pluginFiles)->each(function($file) use (&$installed, $filesystem){
+        $pluginFiles = $filesystem->glob(base_path('matrix/*/{composer.json,*/composer.json,*/*/composer.json}'), GLOB_BRACE);
+        collect($pluginFiles)->each(function ($file) use (&$installed, $filesystem) {
             $plugin = json_decode($filesystem->get($file), true);
             array_set($plugin, 'time', date('Y-m-d H:i:s'));
             array_push($installed, $plugin);

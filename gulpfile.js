@@ -42,7 +42,7 @@ for (var i in installed) {
 }
 
 // 处理本地目录存放的插件
-var pluginFiles = glob.sync('matrix/*/*/composer.json');
+var pluginFiles = glob.sync('matrix/**/composer.json');
 for(var i in pluginFiles){
     var dir = path.dirname(pluginFiles[i]) + '/';
     var prefix = '../../../';
