@@ -1,5 +1,7 @@
 var elixir = require('laravel-elixir');
 var fs = require('fs');
+var path = require('path');
+var glob = require('glob');
 
 /*
  |--------------------------------------------------------------------------
@@ -23,18 +25,32 @@ var plugins = {
     'img': [],
     'fonts': []
 };
+
+// 通过composer命令安装
 var installed = require('./vendor/composer/installed.json');
 for (var i in installed) {
     var plugin = installed[i];
     if (plugin['type'] != 'matrix-plugin') continue;
 
-    var path = 'vendor/' + plugin['name'] + '/';
+    var dir = 'vendor/' + plugin['name'] + '/';
     var prefix = '../../../';
 
-    if (fs.existsSync(path + 'assets/plugin.scss')) plugins['scss'].push(prefix + path + 'assets/plugin.scss');
-    if (fs.existsSync(path + 'assets/plugin.js')) plugins['js'].push(prefix + path + 'assets/plugin.js');
-    if (fs.existsSync(path + 'assets/img')) plugins['img'].push(path + 'assets/img');
-    if (fs.existsSync(path + 'assets/fonts')) plugins['fonts'].push(path + 'assets/fonts');
+    if (fs.existsSync(dir + 'assets/plugin.scss')) plugins['scss'].push(prefix + dir + 'assets/plugin.scss');
+    if (fs.existsSync(dir + 'assets/plugin.js')) plugins['js'].push(prefix + dir + 'assets/plugin.js');
+    if (fs.existsSync(dir + 'assets/img')) plugins['img'].push(dir + 'assets/img');
+    if (fs.existsSync(dir + 'assets/fonts')) plugins['fonts'].push(dir + 'assets/fonts');
+}
+
+// 处理本地目录存放的插件
+var pluginFiles = glob.sync('matrix/*/*/composer.json');
+for(var i in pluginFiles){
+    var dir = path.dirname(pluginFiles[i]) + '/';
+    var prefix = '../../../';
+
+    if (fs.existsSync(dir + 'assets/plugin.scss')) plugins['scss'].push(prefix + dir + 'assets/plugin.scss');
+    if (fs.existsSync(dir + 'assets/plugin.js')) plugins['js'].push(prefix + dir + 'assets/plugin.js');
+    if (fs.existsSync(dir + 'assets/img')) plugins['img'].push(dir + 'assets/img');
+    if (fs.existsSync(dir + 'assets/fonts')) plugins['fonts'].push(dir + 'assets/fonts');
 }
 
 elixir(function (mix) {
@@ -121,6 +137,10 @@ elixir(function (mix) {
                 'css/matrix.css',
                 'js/matrix.js'
             ]
+        )
+        .copy(
+            'public/img',
+            'public/build/img'
         )
         .copy(
             'public/fonts',
