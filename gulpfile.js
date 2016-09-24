@@ -43,7 +43,7 @@ for (var i in installed) {
 
 // 处理本地目录存放的插件
 var pluginFiles = glob.sync('matrix/**/composer.json');
-for(var i in pluginFiles){
+for (var i in pluginFiles) {
     var dir = path.dirname(pluginFiles[i]) + '/';
     var prefix = '../../../';
 
@@ -62,6 +62,11 @@ elixir(function (mix) {
                 'AdminLTE/bootstrap/css/bootstrap.css',
                 'AdminLTE/dist/css/AdminLTE.css',
                 'AdminLTE/dist/css/skins/_all-skins.css',
+                'AdminLTE/plugins/daterangepicker/daterangepicker.css',
+                'AdminLTE/plugins/timepicker/bootstrap-timepicker.css',
+                'AdminLTE/plugins/datepicker/datepicker3.css',
+                'AdminLTE/plugins/select2/select2.css',
+                'AdminLTE/plugins/colorpicker/bootstrap-colorpicker.css',
                 'font-awesome/css/font-awesome.css',
                 'Ionicons/css/ionicons.css',
                 'toastr/toastr.css',
@@ -91,6 +96,19 @@ elixir(function (mix) {
                 'angular-marked/dist/angular-marked.js',
                 'AdminLTE/bootstrap/js/bootstrap.js',
                 'AdminLTE/plugins/slimScroll/jquery.slimscroll.js',
+                'AdminLTE/plugins/input-mask/jquery.inputmask.js',
+                'AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js',
+                'AdminLTE/plugins/input-mask/jquery.inputmask.numeric.extensions.js',
+                'AdminLTE/plugins/input-mask/jquery.inputmask.regex.extensions.js',
+                'AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js',
+                'moment/moment.js',
+                'moment/locale/zh-cn.js',
+                'AdminLTE/plugins/daterangepicker/daterangepicker.js',
+                'AdminLTE/plugins/datepicker/bootstrap-datepicker.js',
+                'AdminLTE/plugins/timepicker/bootstrap-timepicker.js',
+                'AdminLTE/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js',
+                'AdminLTE/plugins/select2/select2.full.js',
+                'AdminLTE/plugins/colorpicker/bootstrap-colorpicker.js',
                 'AdminLTE/dist/js/app.js',
                 'toastr/toastr.js',
                 'jquery-confirm2/js/jquery-confirm.js',
@@ -109,7 +127,11 @@ elixir(function (mix) {
             ],
             'public/fonts'
         )
-        .copy('bower_components/AdminLTE/dist/img', 'public/img')
+        .copy([
+                'bower_components/AdminLTE/dist/img',
+                'bower_components/AdminLTE/plugins/colorpicker/img'
+            ],
+            'public/img')
         .sass(plugins.scss, 'public/css/plugin.css')
         .browserify(plugins.js, 'public/js/plugin.js')
         .copy(plugins.img, 'public/img')
