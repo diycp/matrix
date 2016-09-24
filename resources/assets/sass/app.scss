@@ -1,5 +1,10 @@
-html,body{
+html, body {
   background: none;
+}
+
+// 修复jquery.confirm高度自适应问题
+.content {
+  min-height: auto;
 }
 
 // 页面启动等待效果
