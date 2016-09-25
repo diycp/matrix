@@ -127,11 +127,13 @@ elixir(function (mix) {
             ],
             'public/fonts'
         )
-        .copy([
+        .copy(
+            [
                 'bower_components/AdminLTE/dist/img',
                 'bower_components/AdminLTE/plugins/colorpicker/img'
             ],
-            'public/img')
+            'public/img'
+        )
         .sass(plugins.scss, 'public/css/plugin.css')
         .browserify(plugins.js, 'public/js/plugin.js')
         .copy(plugins.img, 'public/img')
