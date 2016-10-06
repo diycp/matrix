@@ -22,6 +22,7 @@ var plugins = {
     'js': [
         'plugin.js'
     ],
+    'public': [],
     'img': [],
     'fonts': []
 };
@@ -35,8 +36,11 @@ for (var i in installed) {
     var dir = 'vendor/' + plugin['name'] + '/';
     var prefix = '../../../';
 
+    if (fs.existsSync(dir + 'public')) plugins['public'].push(dir + 'public');
     if (fs.existsSync(dir + 'assets/plugin.scss')) plugins['scss'].push(prefix + dir + 'assets/plugin.scss');
     if (fs.existsSync(dir + 'assets/plugin.js')) plugins['js'].push(prefix + dir + 'assets/plugin.js');
+
+    // 兼容之前的模式，即将废弃
     if (fs.existsSync(dir + 'assets/img')) plugins['img'].push(dir + 'assets/img');
     if (fs.existsSync(dir + 'assets/fonts')) plugins['fonts'].push(dir + 'assets/fonts');
 }
@@ -47,8 +51,11 @@ for (var i in pluginFiles) {
     var dir = path.dirname(pluginFiles[i]) + '/';
     var prefix = '../../../';
 
+    if (fs.existsSync(dir + 'public')) plugins['public'].push(dir + 'public');
     if (fs.existsSync(dir + 'assets/plugin.scss')) plugins['scss'].push(prefix + dir + 'assets/plugin.scss');
     if (fs.existsSync(dir + 'assets/plugin.js')) plugins['js'].push(prefix + dir + 'assets/plugin.js');
+
+    // 兼容之前的模式，即将废弃
     if (fs.existsSync(dir + 'assets/img')) plugins['img'].push(dir + 'assets/img');
     if (fs.existsSync(dir + 'assets/fonts')) plugins['fonts'].push(dir + 'assets/fonts');
 }
@@ -138,6 +145,7 @@ elixir(function (mix) {
         .browserify(plugins.js, 'public/js/plugin.js')
         .copy(plugins.img, 'public/img')
         .copy(plugins.fonts, 'public/fonts')
+        .copy(plugins.public, 'public')
         .styles(
             [
                 'core.css',
