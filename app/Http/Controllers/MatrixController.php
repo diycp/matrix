@@ -54,7 +54,7 @@ class MatrixController extends Controller
         $pluginFiles = $filesystem->glob(base_path('matrix/*/{composer.json,*/composer.json,*/*/composer.json}'), GLOB_BRACE);
         collect($pluginFiles)->each(function ($file) use (&$installed, $filesystem) {
             $plugin = json_decode($filesystem->get($file), true);
-            array_set($plugin, 'time', date('Y-m-d H:i:s'));
+            if(!array_get($plugin, 'time')) array_set($plugin, 'time', date('Y-m-d H:i:s'));
             array_push($installed, $plugin);
         });
 
