@@ -19,7 +19,7 @@
 
 ## 安装所需命令
 ```
-npm install -g bower gulp
+npm install -g bower gulp gitbook-cli
 ```
 
 ## 安装步骤
@@ -46,6 +46,12 @@ composer update
 bower install
 gulp
 php artisan migrate:refresh --seed
+```
+
+## 开发文档
+```
+cd document
+gitbook serve
 ```
 
 ## 常见问题
