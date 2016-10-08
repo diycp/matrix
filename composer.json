@@ -26,7 +26,8 @@
     "wangdong/matrix-plugin-footer": "dev-master",
     "wangdong/matrix-plugin-aside": "dev-master",
     "wangdong/matrix-plugin-index": "dev-master",
-    "wangdong/matrix-plugin-error": "dev-master"
+    "wangdong/matrix-plugin-error": "dev-master",
+    "wangdong/matrix-plugin-plugin": "dev-master"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
