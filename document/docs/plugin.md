@@ -9,13 +9,14 @@
 ├─composer.json    # composer配置文件
 ├─assets           # 静态资源目录
 │  ├─plugin.js     # 插件js入口文件（可省略，支持es6）
-│  ├─plugin.scss   # 插件样式文件(可省略)
-│  ├─img           # 图片文件（会复制到/public/img目录下，即将废弃）
-│  └─fonts         # 字体文件（会复制到/public/fonts目录下，即将废弃）
+│  └─plugin.scss   # 插件样式文件(可省略)
 ├─src              # composer PHP文件目录
 │  └─Controller.php    # 插件控制器（view()模板目录为下面这个）
-├─views             # laravel模板目录
-└─public            # 将与public目录合并
+├─views            # laravel模板目录
+└─public           # 将与public目录合并
+   ├─img           # 图片目录
+   ├─fonts         # 字体目录 
+   └─...
 ```
 
 ## composer.json配置
