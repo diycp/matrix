@@ -19,8 +19,10 @@ angular.module('app.controllers', [])
         };
 
         // 监听路由变化
+        let checkLogin = false;
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            if (!angular.isObject($scope.services.matrix.data.user)) $scope.services.init('matrix');
+            if (checkLogin && !angular.isObject($scope.services.matrix.data.user)) $scope.services.init('matrix');
+            checkLogin = true;
         });
 
         // 监听视图渲染状态

@@ -117,7 +117,13 @@ class MatrixController extends Controller
             ->sortBy('time')
             ->pluck('extra.plugin.menu');
 
-        return collect($prepend)->merge($menus)->all();
+        return collect($prepend)
+            ->merge($menus)
+            ->unique(function ($item) {
+                return $item['group'] . '|' . $item['name'];
+            })
+            ->values()
+            ->all();
     }
 
     /**
