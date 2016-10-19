@@ -58,7 +58,7 @@
 - 控制器必须使用resource方式
 
 **插件使用**
-1.将插件放到matrix目录中的任意目录下，然后执行一次`composer dump`命令即可
-2.将写好的插件发布到packagist.org，然后通过`composer require`命令安装即可
+- 1.将插件放到matrix目录中的任意目录下，然后执行一次`composer dump`命令即可
+- 2.将写好的插件发布到packagist.org，然后通过`composer require`命令安装即可
 
 > 参考地址： https://github.com/repertory
