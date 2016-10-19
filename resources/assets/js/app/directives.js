@@ -180,4 +180,28 @@ angular.module('app.directives', [])
             }
         };
     })
+    .directive('contenteditable', function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, element, attrs, ctrl) {
+                let pasteEvent = attrs.onPaste || '';
+
+                element.bind('paste', function (e) {
+                    if(pasteEvent) scope.$eval(pasteEvent)(e);
+                });
+
+                // view -> model
+                element.bind('input', function (e) {
+                    scope.$apply(function () {
+                        ctrl.$setViewValue(element.html());
+                    });
+                });
+
+                // model -> view
+                ctrl.$render = function () {
+                    element.html(ctrl.$viewValue);
+                };
+            }
+        };
+    })
 ;
