@@ -184,7 +184,7 @@ angular.module('app.directives', [])
         return {
             require: 'ngModel',
             link: function (scope, element, attrs, ctrl) {
-                let pasteEvent = attrs.onPaste || '';
+                let pasteEvent = attrs.paste || '';
 
                 element.bind('paste', function (e) {
                     if(pasteEvent) scope.$eval(pasteEvent)(e);
