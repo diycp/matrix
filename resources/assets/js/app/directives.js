@@ -191,7 +191,7 @@ angular.module('app.directives', [])
                 });
 
                 // view -> model
-                element.bind('input', function (e) {
+                element.on('input keyup blur change', function (e) {
                     scope.$apply(function () {
                         ctrl.$setViewValue(element.html());
                     });
