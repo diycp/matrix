@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/wangdong/matrix/downloads)](https://packagist.org/packages/wangdong/matrix)
 [![License](https://poser.pugx.org/wangdong/matrix/license)](https://packagist.org/packages/wangdong/matrix)
 
-基于Laravel + Angular.js + AdminLTE开发 [提交BUG](https://github.com/repertory/matrix/issues/new)
+基于Laravel + Angular.js + AdminLTE开发
 
 
 > 环境要求
@@ -65,3 +65,8 @@ gitbook serve
 
 - composer安装失败或超时？
   - 国内访问不稳定，建议使用国内镜像: http://pkg.phpcomposer.com/
+
+
+## BUG反馈 
+
+https://github.com/repertory/matrix/issues/new
