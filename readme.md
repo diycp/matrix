@@ -4,7 +4,8 @@
 [![Total Downloads](https://poser.pugx.org/wangdong/matrix/downloads)](https://packagist.org/packages/wangdong/matrix)
 [![License](https://poser.pugx.org/wangdong/matrix/license)](https://packagist.org/packages/wangdong/matrix)
 
-基于Laravel + Angular.js + AdminLTE开发
+基于Laravel + Angular.js + AdminLTE开发 [提交BUG](https://github.com/repertory/matrix/issues/new)
+
 
 > 环境要求
 - node.js >= 6.0 (建议)
