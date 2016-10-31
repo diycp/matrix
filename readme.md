@@ -19,7 +19,7 @@
 
 ## 安装所需命令
 ```
-npm install -g bower gulp gitbook-cli
+npm install -g gulp gitbook-cli
 ```
 
 ## 安装步骤
