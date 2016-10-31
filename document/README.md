@@ -118,25 +118,20 @@ composer create-project wangdong/matrix matrix dev-master
 cd matrix
 
 npm install
-bower install
-gulp
+npm start
 ```
 
 **代码更新**
 
 ```
 composer update
-bower instasll
-gulp
+npm update
 ```
 
 ## 常见问题
 - npm安装失败或速度很慢？
   - 国内访问不稳定，建议使用淘宝镜像: http://npm.taobao.org
   - windows上建议安装python2.7 + vc2012 + .net framework3后再试
-
-- bower安装失败？
-  - 由于依赖git命令，安装后重试即可
 
 - composer安装失败或超时？
   - 国内访问不稳定，建议使用国内镜像: http://pkg.phpcomposer.com/

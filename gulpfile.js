@@ -13,10 +13,10 @@ var glob = require('glob');
  | file for our application, as well as publishing vendor resources.
  |
  */
-var bower_path = 'bower_components/';
+var npm_path = 'node_modules/';
 
-// bower扩展任务队列
-var bowers = {
+// npm扩展任务队列
+var package = {
     'scripts': [
         'es6-shim/es6-shim.js',
         'jquery/dist/jquery.js',
@@ -28,57 +28,56 @@ var bowers = {
         'angular-aria/angular-aria.js',
         'angular-ui-router/release/angular-ui-router.js',
         'angular-ui-validate/dist/validate.js',
-        'angular-fullscreen/src/angular-fullscreen.js',
         'angular-material/angular-material.js',
         'angular-material-data-table/dist/md-data-table.js',
         'marked/lib/marked.js',
         'angular-marked/dist/angular-marked.js',
-        'AdminLTE/bootstrap/js/bootstrap.js',
-        'AdminLTE/plugins/slimScroll/jquery.slimscroll.js',
-        'AdminLTE/plugins/input-mask/jquery.inputmask.js',
-        'AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js',
-        'AdminLTE/plugins/input-mask/jquery.inputmask.numeric.extensions.js',
-        'AdminLTE/plugins/input-mask/jquery.inputmask.regex.extensions.js',
-        'AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js',
+        'admin-lte/bootstrap/js/bootstrap.js',
+        'admin-lte/plugins/slimScroll/jquery.slimscroll.js',
+        'admin-lte/plugins/input-mask/jquery.inputmask.js',
+        'admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js',
+        'admin-lte/plugins/input-mask/jquery.inputmask.numeric.extensions.js',
+        'admin-lte/plugins/input-mask/jquery.inputmask.regex.extensions.js',
+        'admin-lte/plugins/input-mask/jquery.inputmask.extensions.js',
         'moment/moment.js',
         'moment/locale/zh-cn.js',
-        'AdminLTE/plugins/daterangepicker/daterangepicker.js',
-        'AdminLTE/plugins/datepicker/bootstrap-datepicker.js',
-        'AdminLTE/plugins/timepicker/bootstrap-timepicker.js',
-        'AdminLTE/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js',
-        'AdminLTE/plugins/select2/select2.full.js',
-        'AdminLTE/plugins/colorpicker/bootstrap-colorpicker.js',
-        'AdminLTE/dist/js/app.js',
+        'admin-lte/plugins/daterangepicker/daterangepicker.js',
+        'admin-lte/plugins/datepicker/bootstrap-datepicker.js',
+        'admin-lte/plugins/timepicker/bootstrap-timepicker.js',
+        'admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js',
+        'admin-lte/plugins/select2/select2.full.js',
+        'admin-lte/plugins/colorpicker/bootstrap-colorpicker.js',
+        'admin-lte/dist/js/app.js',
         'toastr/toastr.js',
-        'jquery-confirm2/js/jquery-confirm.js',
+        'jquery-confirm-npm/js/jquery-confirm.js',
         'qrcode-generator/js/qrcode.js',
         'qrcode-generator/js/qrcode_UTF8.js',
         'angular-qrcode/angular-qrcode.js'
     ],
     'styles': [
-        'AdminLTE/bootstrap/css/bootstrap.css',
-        'AdminLTE/dist/css/AdminLTE.css',
-        'AdminLTE/dist/css/skins/_all-skins.css',
-        'AdminLTE/plugins/daterangepicker/daterangepicker.css',
-        'AdminLTE/plugins/timepicker/bootstrap-timepicker.css',
-        'AdminLTE/plugins/datepicker/datepicker3.css',
-        'AdminLTE/plugins/select2/select2.css',
-        'AdminLTE/plugins/colorpicker/bootstrap-colorpicker.css',
+        'admin-lte/bootstrap/css/bootstrap.css',
+        'admin-lte/dist/css/AdminLTE.css',
+        'admin-lte/dist/css/skins/_all-skins.css',
+        'admin-lte/plugins/daterangepicker/daterangepicker.css',
+        'admin-lte/plugins/timepicker/bootstrap-timepicker.css',
+        'admin-lte/plugins/datepicker/datepicker3.css',
+        'admin-lte/plugins/select2/select2.css',
+        'admin-lte/plugins/colorpicker/bootstrap-colorpicker.css',
         'font-awesome/css/font-awesome.css',
-        'Ionicons/css/ionicons.css',
-        'toastr/toastr.css',
+        'ionicons/css/ionicons.css',
+        'toastr/build/toastr.css',
         'angular-material/angular-material.css',
         'angular-material-data-table/dist/md-data-table.css',
-        'jquery-confirm2/css/jquery-confirm.css'
+        'jquery-confirm-npm/css/jquery-confirm.css'
     ],
     'img': [
-        'AdminLTE/dist/img',
-        'AdminLTE/plugins/colorpicker/img'
+        'admin-lte/dist/img',
+        'admin-lte/plugins/colorpicker/img'
     ],
     'fonts': [
-        'AdminLTE/bootstrap/fonts',
+        'admin-lte/bootstrap/fonts',
         'font-awesome/fonts',
-        'Ionicons/fonts'
+        'ionicons/fonts'
     ]
 };
 
@@ -131,10 +130,10 @@ elixir(function (mix) {
         .sass(plugins.scss, 'public/css/plugin.css')
         .browserify(plugins.js, 'public/js/plugin.js')
         .copy(plugins.public, 'public')
-        .copy(bowers.fonts.map(path => bower_path + path), 'public/fonts')
-        .copy(bowers.img.map(path => bower_path + path), 'public/img')
-        .styles(bowers.styles.map(path => '../../' + bower_path + path).concat(['app.css', 'plugin.css']), 'public/css/matrix.css', 'public/css')
-        .scripts(bowers.scripts.map(path => '../../' + bower_path + path).concat(['plugin.js', 'app.js']), 'public/js/matrix.js', 'public/js')
+        .copy(package.fonts.map(path => npm_path + path), 'public/fonts')
+        .copy(package.img.map(path => npm_path + path), 'public/img')
+        .styles(package.styles.map(path => '../../' + npm_path + path).concat(['app.css', 'plugin.css']), 'public/css/matrix.css', 'public/css')
+        .scripts(package.scripts.map(path => '../../' + npm_path + path).concat(['plugin.js', 'app.js']), 'public/js/matrix.js', 'public/js')
         .version(['css/matrix.css', 'js/matrix.js'])
         .copy('public/img', 'public/build/img')
         .copy('public/fonts', 'public/build/fonts');

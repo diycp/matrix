@@ -1,5 +1,7 @@
 'use strict';
 
+import './lib/angular-fullscreen';
+
 import './app/configs.js';
 import './app/services.js';
 import './app/factorys.js';

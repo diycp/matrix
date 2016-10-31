@@ -1,11 +1,35 @@
 {
   "private": true,
   "scripts": {
+    "start": "gulp",
     "prod": "gulp --production",
     "dev": "gulp watch"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "laravel-elixir": "^5.0.0"
+  },
+  "dependencies": {
+    "admin-lte": "2.3.*",
+    "angular": "1.*",
+    "angular-animate": "1.*",
+    "angular-aria": "1.*",
+    "angular-cookies": "1.*",
+    "angular-marked": "^1.2.2",
+    "angular-material": "^1.1.1",
+    "angular-material-data-table": "^0.10.9",
+    "angular-qrcode": "^6.2.1",
+    "angular-resource": "1.*",
+    "angular-sanitize": "1.*",
+    "angular-ui-router": "^0.3.1",
+    "angular-ui-validate": "^1.2.2",
+    "es6-shim": "*",
+    "font-awesome": "4.*",
+    "ionicons": "2.*",
+    "jquery": "2.*",
+    "jquery-confirm-npm": "2.*",
+    "marked": "*",
+    "moment": "^2.15.2",
+    "toastr": "^2.1.2"
   }
 }

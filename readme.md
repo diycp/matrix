@@ -6,10 +6,9 @@
 
 基于Laravel + Angular.js + AdminLTE开发
 
-
 > 环境要求
-- node.js >= 6.0 (建议)
-- php >= 5.5.9
+- node.js >= 6.9.0 (建议)
+- php >= 5.5.9 (必须)
 
 ## 仓库地址
 
@@ -32,10 +31,9 @@ cd matrix
 
 # 安装依赖包
 npm install
-bower install
 
 # 编译静态资源文件
-gulp  # 开发时建议使用监听模式 gulp watch
+npm start # 本地模式 (监听模式 npm run dev) 或 线上模式 npm run prod
 
 # 修改.env配置，然后初始化数据库
 php artisan migrate --seed
@@ -44,8 +42,8 @@ php artisan migrate --seed
 ## 升级步骤
 ```
 composer update
-bower install
-gulp
+npm update
+npm start
 php artisan migrate:refresh --seed
 ```
 
@@ -60,12 +58,13 @@ gitbook serve
   - 国内访问不稳定，建议使用淘宝镜像: http://npm.taobao.org
   - windows上建议安装python2.7 + vc2012 + .net framework3后再试
 
-- bower安装失败？
-  - 由于依赖git命令，安装后重试即可
-
 - composer安装失败或超时？
   - 国内访问不稳定，建议使用国内镜像: http://pkg.phpcomposer.com/
 
+## 变动说明
+
+- [2016-10-31]
+  - 移除bower管理模式（考虑到国内bower速度太慢，因此改用npm替代的方式）
 
 ## BUG反馈 
 
