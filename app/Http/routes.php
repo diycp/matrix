@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Filesystem\Filesystem;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -29,6 +31,9 @@ if (count($route) >= 2) {
         $object = new \ReflectionClass($controller);
         $pluginPath = dirname(dirname($object->getFileName())); //插件根目录
 
+        $filesystem = new Filesystem();
+        $plugin = json_decode($filesystem->get($pluginPath . '/composer.json'), true);
+
         // 设置插件模板根目录
         config([
             'view.paths' => [
@@ -36,7 +41,36 @@ if (count($route) >= 2) {
             ],
         ]);
 
-        Route::resource("{$group}/{$name}", $controller);
+        // 路由模式 TODO 默认使用resource
+        $routeType = array_get($plugin, 'extra.plugin.route.type', 'resource');
+        switch ($routeType) {
+            // 使用自定义模式
+            case 'custom':
+                Route::group(['prefix' => "{$group}/{$name}"], function () use ($controller, $plugin) {
+                    $route = array_get($plugin, 'extra.plugin.route', []);
+
+                    foreach ($route as $method => $options) {
+                        $method = strtolower($method);
+                        if (!in_array($method, ['get', 'post', 'put', 'patch', 'delete', 'options', 'any'])) {
+                            continue;
+                        }
+                        foreach ($options as $url => $action) {
+                            Route::$method($url, ['uses' => "{$controller}@{$action}"]);
+                        }
+                    }
+                });
+                break;
+
+            // 使用controller模式
+            case 'controller':
+                Route::controller("{$group}/{$name}", $controller);
+                break;
+
+            // 使用resource模式
+            default:
+                Route::resource("{$group}/{$name}", $controller);
+        }
+
     }
 }
 
