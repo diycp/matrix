@@ -46,6 +46,19 @@
         "name": "关于系统",
         "icon": "fa fa-info-circle",
         "keywords": "guanyuxitong"
+      },
+      "route": {
+        "type": "custom",
+        "get": {
+          "/": "index",
+          "test": "test"
+        },
+        "post": {},
+        "put": {},
+        "patch": {}
+        "delete": {},
+        "options": {},
+        "any": {}
       }
     }
   }
@@ -55,7 +68,7 @@
 **说明**
 - type必须为`matrix-plugin`
 - 如果插件不需要显示左侧菜单，则设置extra.plugin.menu.status = false
-- 控制器必须使用resource方式
+- 控制器根据`extra.plugin.route.type`方式加载，默认使用resource方式
 
 **插件使用**
 - 1.将插件放到matrix目录中的任意目录下，然后执行一次`composer dump`命令即可
