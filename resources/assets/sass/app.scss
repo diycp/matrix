@@ -4,7 +4,7 @@ html, body {
 
 // 修复jquery.confirm高度自适应问题
 .content {
-  min-height: auto;
+  min-height: 0;
 }
 
 // 页面启动等待效果
@@ -63,7 +63,7 @@ label.has-error.control-label {
   table > thead > tr > td,
   table > tbody > tr > td,
   table > tfoot > tr > td {
-    border: 1px solid #ddd;
+    border: 1px solid #dddddd;
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
@@ -72,6 +72,19 @@ label.has-error.control-label {
   table > thead > tr > th {
     vertical-align: bottom;
     border-bottom: 2px solid #ddd;
+  }
+
+  pre{
+    background: #333;
+    color: #fff;
+    font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    border: 1px solid #dedede!important;
+    padding: 10px;
+    max-height: 300px;
+    width: auto;
+    overflow: auto!important;
   }
 }
 
