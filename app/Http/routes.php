@@ -29,10 +29,14 @@ if (count($route) >= 2) {
     if (class_exists($controller)) {
         // 反解析类
         $object = new \ReflectionClass($controller);
-        $pluginPath = dirname(dirname($object->getFileName())); //插件根目录
+        $pluginPath = dirname(dirname($object->getFileName())); // 插件根目录
 
+        // 获取插件信息
+        $plugin = [];
         $filesystem = new Filesystem();
-        $plugin = json_decode($filesystem->get($pluginPath . '/composer.json'), true);
+        if ($filesystem->exists($pluginPath . '/composer.json')) {
+            $plugin = json_decode($filesystem->get($pluginPath . '/composer.json'), true);
+        }
 
         // 设置插件模板根目录
         config([
