@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Models\User;
 use Auth;
 use Illuminate\Filesystem\Filesystem;
+use Identicon\Identicon;
 
 class MatrixController extends Controller
 {
@@ -38,7 +39,11 @@ class MatrixController extends Controller
      */
     public function getAuth()
     {
-        return Auth::user();
+        $identicon = new Identicon();
+
+        $user = Auth::user();
+        $user->head = $identicon->getImageDataUri(substr($user->email, 0, 3), 90, rand(777777, 999999));
+        return $user;
     }
 
     /**

@@ -20,6 +20,7 @@
   "require": {
     "php": ">=5.5.9",
     "laravel/framework": "5.2.*",
+    "yzalis/identicon": "^1.1",
     "wangdong/matrix-plugin-login": "dev-master",
     "wangdong/matrix-plugin-register": "dev-master",
     "wangdong/matrix-plugin-header": "dev-master",
@@ -69,5 +70,11 @@
   "config": {
     "preferred-install": "dist",
     "secure-http": true
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
   }
 }
