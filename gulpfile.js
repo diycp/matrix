@@ -56,8 +56,6 @@ var package = {
     ],
     'styles': [
         'admin-lte/bootstrap/css/bootstrap.css',
-        'admin-lte/dist/css/AdminLTE.css',
-        'admin-lte/dist/css/skins/_all-skins.css',
         'admin-lte/plugins/daterangepicker/daterangepicker.css',
         'admin-lte/plugins/timepicker/bootstrap-timepicker.css',
         'admin-lte/plugins/datepicker/datepicker3.css',
@@ -68,7 +66,11 @@ var package = {
         'toastr/build/toastr.css',
         'angular-material/angular-material.css',
         'angular-material-data-table/dist/md-data-table.css',
-        'jquery-confirm-npm/css/jquery-confirm.css'
+        'jquery-confirm-npm/css/jquery-confirm.css',
+
+        // 下面两个放到最后加载，防止样式会被覆盖
+        'admin-lte/dist/css/AdminLTE.css',
+        'admin-lte/dist/css/skins/_all-skins.css'
     ],
     'img': [
         'admin-lte/dist/img',
