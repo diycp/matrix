@@ -36,7 +36,7 @@ class MatrixController extends Controller
      * 获取用户对应左侧菜单数据
      * @return mixed
      */
-    public function getUser()
+    public function getAuth()
     {
         return Auth::user();
     }

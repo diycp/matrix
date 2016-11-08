@@ -7,7 +7,7 @@ angular.module('app.services', [])
         this.init = function () {
             let that = this;
             // 获取用户信息
-            $http.get('/matrix/user').success(function (user) {
+            $http.get('/matrix/auth').success(function (user) {
                 that.data['user'] = user;
 
                 // 获取用户当前菜单
