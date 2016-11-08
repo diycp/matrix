@@ -19,14 +19,6 @@ html, body {
   margin-left: -20px;
 }
 
-// 修复左侧菜单展开效果
-.sidebar-menu li.active > a > .pull-right-container > .fa-angle-left {
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
-
 // angular validation
 .ng-invalid.ng-dirty {
   border-color: #a94442;
