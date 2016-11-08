@@ -14,7 +14,7 @@ class MatrixController extends Controller
     {
         $this->middleware('auth', [
             'only' => [
-                'getUser',
+                'getAuth',
                 'getMenu',
                 'getLogout',
             ]
