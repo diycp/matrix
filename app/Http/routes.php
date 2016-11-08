@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 // 插件模块(登录验证需要插件自己调用auth中间件)
 $path = app('request')->path();
-$route = explode('/', $path);
+$route = array_values(array_filter(explode('/', $path)));
 
 if (count($route) >= 2) {
     $group = $route[0];
