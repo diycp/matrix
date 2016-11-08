@@ -33,7 +33,7 @@ class MatrixController extends Controller
     // ==============  以下为接口功能 ====================
 
     /**
-     * 获取用户对应左侧菜单数据
+     * 获取用户信息
      * @return mixed
      */
     public function getAuth()

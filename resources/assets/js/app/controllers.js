@@ -32,6 +32,17 @@ angular.module('app.controllers', [])
 
         // 监听未登录状态
         $rootScope.$on('event:unauthorized', function (event, state) {
+            angular.forEach(appServices, function (service, name) {
+                // 清除数据
+                if (angular.isArray(service.data)) service.data = [];
+                if (angular.isObject(service.data)) service.data = {};
+
+                // 调用清除方法，用于清理特殊数据
+                if (typeof service.clear == 'function') {
+                    return service.clear();
+                }
+            });
+
             if (jQuery.inArray(state.current.name, ['login', 'register']) < 0) {
                 $state.go('login');
                 toastr.error('请先登录');
