@@ -42,7 +42,7 @@ class MatrixController extends Controller
         $identicon = new Identicon();
 
         $user = Auth::user();
-        $user->head = $identicon->getImageDataUri(substr($user->email, 0, 3), 90);
+        $user->head = $identicon->getImageDataUri($user->email, 90);
         return $user;
     }
 
