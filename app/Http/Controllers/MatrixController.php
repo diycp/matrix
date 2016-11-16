@@ -68,7 +68,14 @@ class MatrixController extends Controller
             return array_get($item, 'extra.plugin.menu.status', true);
         });
 
-        $groups = $collect->pluck('extra.plugin.menu.group')->toArray();
+        // 过滤一级分组
+        $groups = $collect
+            ->filter(function ($item) {
+                return str_is(array_get($item, 'extra.plugin.menu.group'), '*|*');
+            })
+            ->pluck('extra.plugin.menu.group')
+            ->toArray();
+
         $prepend = [];
 
         $collect->sortBy('time')->each(function ($item) use ($groups, &$prepend) {

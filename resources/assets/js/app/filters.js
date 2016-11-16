@@ -37,9 +37,9 @@ angular.module('app.filters', [])
                 let parents = groups[i - 1];
                 if (!parents) continue;
 
-                angular.forEach(parents, function (item) {
-                    item['children'] = null;
-                });
+                // angular.forEach(parents, function (item) {
+                //     item['children'] = null;
+                // });
 
                 angular.forEach(parents, function (parent) {
                     let key = parent['group'] + '|' + parent['name'];
