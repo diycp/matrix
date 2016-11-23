@@ -131,6 +131,7 @@ class MatrixController extends Controller
 
         return collect($prepend)
             ->merge($menus)
+            ->reverse()
             ->unique(function ($item) {
                 return $item['group'] . '|' . $item['name'];
             })
