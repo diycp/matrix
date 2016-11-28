@@ -26,7 +26,8 @@ angular.module('app.bower', [
     'hc.marked',
     'ngMaterial',
     'md.data.table',
-    'monospaced.qrcode'
+    'monospaced.qrcode',
+    'echarts-ng'
 ]);
 
 angular.module('app.modules', [

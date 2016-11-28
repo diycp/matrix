@@ -52,7 +52,9 @@ var package = {
         'jquery-confirm-npm/js/jquery-confirm.js',
         'qrcode-generator/js/qrcode.js',
         'qrcode-generator/js/qrcode_UTF8.js',
-        'angular-qrcode/angular-qrcode.js'
+        'angular-qrcode/angular-qrcode.js',
+        'echarts/dist/echarts.js',
+        'echarts-ng/dist/echarts-ng.js'
     ],
     'styles': [
         'admin-lte/bootstrap/css/bootstrap.css',
