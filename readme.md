@@ -62,6 +62,8 @@ gitbook serve
   - 国内访问不稳定，建议使用国内镜像: http://pkg.phpcomposer.com/
 
 ## 变动说明
+- [2016-11-28]
+  - 增加百度echarts插件（angular.js支持采用echarts-ng模块）
 
 - [2016-10-31]
   - 移除bower管理模式（考虑到国内bower速度太慢，因此改用npm替代的方式）
